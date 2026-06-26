@@ -15,7 +15,7 @@ EMBEDDED_ROOT = Path(__file__).resolve().parents[2]
 
 # VERSION="naives_mp_8"
 # The above code is defining a Python variable `VERSION` with the value "naives_mp_8".
-VERSION="sq_int8_v9"
+VERSION="sq_int8_v10"
 # Folder containing generated WAVs to evaluate.
 GENERATED_AUDIO_DIR = EMBEDDED_ROOT / f"data/test_audio/generated/{VERSION}"
 # Folder containing clean/original WAVs.

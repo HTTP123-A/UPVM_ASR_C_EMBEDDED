@@ -23,6 +23,7 @@ W8A8 quantized execution.
 | `SQ_INT8_V7`   | INT8/F32 mixed (W8A8); V6 **+ SSM REQUANT also made integer-only** (same fixed-point `mul`+`shift`; the SSM in_proj→dw_conv2d `x`-branch requant, encoder/latent/decoder; `z` branch dequant + output untouched; not bit-identical to V6) | `-fopenmp` | `data/weight_sq_int8_v7/` (V6 bytes + int32 `ssm_requant_mul`/`ssm_requant_shift`, from `weight_extractor_sq_int8_v7.py`) | `NORMAL`, `STAGE_TIMING`, `DETAIL_STAGE_TIMING`, `MEM_PROFILE` |
 | `SQ_INT8_V8`   | INT8/F32 mixed (W8A8); V7 **+ PatchEmbed LayerNorm rsqrt replaced by a range-reduced piece-wise-linear LUT** (the 2 patch-embed norms only; conv dequant fused into the norm, reads the int32 acc; no `sqrtf`/divide; other LNs + gelu stay f32; not bit-identical to V7) | `-fopenmp` | `data/weight_sq_int8_v8/` (V7 bytes + shared f32 PWL `pwl_rsqrt_knot`/`slope`/`intercept`, from `weight_extractor_sq_int8_v8.py`) | `NORMAL`, `STAGE_TIMING`, `DETAIL_STAGE_TIMING`, `MEM_PROFILE` |
 | `SQ_INT8_V9`   | INT8/F32 mixed (W8A8); V8 **+ PatchEmbed LayerNorm made FULLY INTEGER** (int64 mean/var, fixed-point rsqrt LUT + affine) with **norm1 → int8** (calibrated `S_ln`) feeding an **int8 GELU LUT** (fused dequant+GELU+quant) feeding `conv2` directly; **norm2 → f32** (encoder residual). Only f32 left in patch-embed = norm2 output; not bit-identical to V8 | `-fopenmp` | `data/weight_sq_int8_v9/` (V8 bytes + int fixed-point LN tables + per-channel GELU LUT, from `weight_extractor_sq_int8_v9.py` + `calibrate_v9.py`) | `NORMAL`, `STAGE_TIMING`, `DETAIL_STAGE_TIMING`, `MEM_PROFILE` |
+| `SQ_INT8_V10`  | INT8/F32 mixed (W8A8); **numerically identical to V9** — V9's hot int8 kernels **vectorized with AVX-VNNI** (`vpdpbusd`, 256-bit): `pointwise_conv2d_int8`/`_split2` (MLP + SS2D in/out_proj) via an on-stack transpose tile + `+128` offset compensation; `depthwise_conv2d_int8`/`_int32` via AVX2 widening. **Bit-exact** to V9 (same SNR) — only latency changes. Scalar fallback when not built with `-mavxvnni`. See §7.10. | `-fopenmp`; `-mavx2 -mfma -mavxvnni` on the 4 int8 kernels only | `data/weight_sq_int8_v10/` (**identical bytes to V9**; `weight_extractor_sq_int8_v10.py`) | `NORMAL`, `STAGE_TIMING`, `DETAIL_STAGE_TIMING`, `MEM_PROFILE` |
 
 All versions share the same input wavs (`data/test_audio/downsample/`) and write to
 their own `data/test_audio/generated/<version>/` and `results/<version>/` folders.
@@ -567,6 +568,46 @@ to int8 only at `conv2`'s input (more mantissa through the nonlinearity; you mus
 fully integer, **no standalone dequant/quant/requant** between the ops (each nonlinear kernel folds its
 own input dequant + output quant, exactly as V8's LN already folds its input dequant).
 
+### 7.10 `sq_int8_v10` — AVX-VNNI vectorized int8 kernels (bit-exact to V9)
+
+V0–V9's pure-int8 kernels are **scalar** naive ports of the f32 code, so the int8 path was
+~5–8% *slower* than f32 on CPU (it pays the quant/dequant cost but uses none of the hardware's
+int8 throughput; see §11). V10 leaves the math **exactly** as V9 and only vectorizes the hot int8
+kernels with **AVX-VNNI** (`vpdpbusd`, 256-bit VEX). It is **numerically identical to V9** — same
+weights (`data/weight_sq_int8_v10/` is byte-identical to V9), same SNR; **only latency changes**.
+Every kernel keeps its signature, buffers, and call sites — the change is internal.
+
+Vectorized kernels (each keeps the original scalar body as a fallback under `#else`):
+
+- **`pointwise_conv2d_int8` / `pointwise_conv2d_split2_int8`** (MLP `fc1`/`fc2`, SS2D `in_proj`/`out_proj`
+  — the dominant int8 GEMM): activations are `[C_IN, L]` (channel-major), so the contraction dim is
+  strided; `vpdpbusd` needs 4 contiguous contraction bytes per lane, so an 8-pixel block is transposed
+  into an **on-stack** tile `[C_IN/4][8][4]` (no model buffer touched). `vpdpbusd` is `u8×s8` but
+  activations are signed, so `x` is biased by `+128` (→ `uint8`) and the per-output term
+  `128·Σ_c w[o,c]` is subtracted back:
+  `Σ_c (x[c]+128)·w[o,c] − 128·Σ_c w[o,c] = Σ_c x[c]·w[o,c]` → **integer-exact**, identical to the
+  scalar int32 accumulator. Tail pixels (`L % 8`) use the scalar body.
+- **`depthwise_conv2d_int8`** (SSM dw-conv, stride-1 same-pad): no cross-channel contraction, so
+  AVX2 widening (`vpmovsxbd`/`vpmulld`/`vpaddd`) over the contiguous width `W`, accumulating each
+  output row in place over the `k×k` taps (integer add is associative ⇒ bit-exact).
+- **`depthwise_conv2d_int32`** (encoder MLP sumpool): AVX2 for the `stride==1` case; the real use is
+  the **stride-2** 2×2 sumpool whose output columns are strided in the input (and which may alias
+  `y==x`), so that path keeps the exact scalar kernel.
+
+**Build:** the Makefile compiles **only the four vectorized int8 kernels** with
+`-mavx2 -mfma -mavxvnni`; the rest of v10 keeps v9's exact codegen, so the **f32 datapath stays
+bit-identical to v9** (no auto-vectorization / FMA-contraction drift) and no other version is
+affected. It deliberately does **not** use `-march=native`: the int8 targets are the
+**i7-12700K** (Alder Lake, *no* AVX-512) and **Ryzen 9700X** (Zen 5, has AVX-512), so 256-bit
+**AVX-VNNI** is the common ISA across both; `-march=native` on an AVX-512 box would `SIGILL` on the
+12700K. Compiled without `-mavxvnni`, the kernels fall back to scalar and stay correct. ARM
+Cortex-A55 is a later port (NEON `sdot`, 128-bit — same tiling, narrower).
+
+**Verification:** each kernel was checked **bit-exact vs the scalar reference** on randomized int8
+inputs across many shapes (non-multiples of 8/4, `L=1` linear layers, large `C_IN`, all kernel
+sizes, the split boundary, and the stride-2 sumpool). Build & run with
+`VERSION=SQ_INT8_V10 MODE=DETAIL_STAGE_TIMING make` to compare latency against V9.
+
 ---
 
 ## 8. Project Layout
@@ -743,9 +784,10 @@ f32, drops to 4 MB this way, or 2 MB in bf16, or streams from DDR4 at ~0.4 ms).
 
 ## 11. CPU Vectorization Roadmap (int8 VNNI + SS2D scan) and FPGA Portability — Design Notes
 
-> Status: **analysis only, not yet implemented.** Captures the rationale before the
-> implementation step. Measurements below are from `SQ_INT8_V9`, `inner_8`,
-> `results/sq_int8_v9/inner_8/detail_stage_timing_summ.log` (n=3659, ~284 ms/segment).
+> Status: **§11.1 (int8 GEMM/depthwise) is now implemented in `SQ_INT8_V10`** — see §7.10.
+> §11.2 (SS2D selective scan) and §11.3 (FPGA) remain design notes. Measurements below are from
+> `SQ_INT8_V9`, `inner_8`, `results/sq_int8_v9/inner_8/detail_stage_timing_summ.log`
+> (n=3659, ~284 ms/segment).
 
 ### 11.1 Why the current int8 path is *slower* than f32 (and what fixes it)
 - Measured: int8 (V0/V5) runs **~5–8% slower than f32** on CPU; the only real win so far

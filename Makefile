@@ -92,7 +92,7 @@ OPT ?= -O3
 WARN ?= -Wall -Wextra
 DEPFLAGS := -MMD -MP
 OPENMP_FLAGS :=
-ifneq ($(filter $(VERSION_DIR),naives_mp sq_int8_v0 sq_int8_v1 sq_int8_v2 sq_int8_v3 sq_int8_v4 sq_int8_v5 sq_int8_v6 sq_int8_v7 sq_int8_v8 sq_int8_v9),)
+ifneq ($(filter $(VERSION_DIR),naives_mp sq_int8_v0 sq_int8_v1 sq_int8_v2 sq_int8_v3 sq_int8_v4 sq_int8_v5 sq_int8_v6 sq_int8_v7 sq_int8_v8 sq_int8_v9 sq_int8_v10),)
 OPENMP_FLAGS += -fopenmp
 endif
 
@@ -101,6 +101,21 @@ LDFLAGS += $(OPENMP_FLAGS)
 LDLIBS += $(FFTW_LDLIBS) -lm -pthread
 ifeq ($(UNAME_S),Linux)
 LDLIBS += -lrt
+endif
+
+# v10-only: compile the FOUR AVX-VNNI-vectorized int8 kernels with the SIMD flags, and ONLY those.
+# The rest of v10 keeps the exact v9 codegen (no -mavx2/-mfma), so the f32 datapath stays
+# bit-identical to v9 (no auto-vec/FMA-contraction drift) and only the int8 kernels change.
+# 256-bit AVX-VNNI is the common ISA for the int8 targets i7-12700K (no AVX-512) and Ryzen 9700X;
+# deliberately NOT -march=native (would SIGILL on the 12700K). Kernels fall back to scalar when
+# these flags are absent, so other build hosts still compile.
+ifeq ($(VERSION_DIR),sq_int8_v10)
+SIMD_KERNEL_OBJS := \
+	$(BUILD_DIR)/sources/sq_int8_v10/kernels/pointwise_conv2d_int8.o \
+	$(BUILD_DIR)/sources/sq_int8_v10/kernels/pointwise_conv2d_split2_int8.o \
+	$(BUILD_DIR)/sources/sq_int8_v10/kernels/depthwise_conv2d_int8.o \
+	$(BUILD_DIR)/sources/sq_int8_v10/kernels/depthwise_conv2d_int32.o
+$(SIMD_KERNEL_OBJS): CFLAGS += -mavx2 -mfma -mavxvnni
 endif
 
 .PHONY: all clean info prepare_dirs
