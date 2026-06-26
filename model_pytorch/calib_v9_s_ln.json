@@ -1,0 +1,16 @@
+{
+  "_meta": {
+    "n_wavs": 300,
+    "percentile": 99.99,
+    "n_fft": 512,
+    "hop": 64,
+    "win": 256,
+    "note": "S_ln = pctl(|norm1_out|)/127, per stream"
+  },
+  "mag": 0.017307587495939,
+  "_mag_range_pctl": 2.198063611984253,
+  "_mag_rawmax": 2.4391419887542725,
+  "pha": 0.022346935872956525,
+  "_pha_range_pctl": 2.8380608558654785,
+  "_pha_rawmax": 2.8847908973693848
+}

@@ -1,0 +1,13 @@
+member_name,filename,dtype,numel,shape,source_key,note
+conv1_w,conv1_w.bin,int8,72,8x1x3x3,patch_embed_mag.0.weight_int8,as stored (no refold)
+conv1_w_quant_scale,conv1_w_quant_scale.bin,float32,1,1,patch_embed_mag.0.a_scale,per-tensor a_scale*a_scale_mul
+conv1_w_dequant_scale,conv1_w_dequant_scale.bin,float32,8,8,patch_embed_mag.0.w_scale,per-OC; int32 acc -> f32
+conv1_b_i32,conv1_b_i32.bin,int32,8,8,patch_embed_mag.0.bias,round(bias_f32 / dequant_scale)
+norm1_w,norm1_w.bin,float32,8,8,patch_embed_mag.2.weight,
+norm1_b,norm1_b.bin,float32,8,8,patch_embed_mag.2.bias,
+conv2_w,conv2_w.bin,int8,1152,16x8x3x3,patch_embed_mag.5.weight_int8,"act scale folded, requantized per OC"
+conv2_w_quant_scale,conv2_w_quant_scale.bin,float32,8,8,patch_embed_mag.5.a_scale,sq_s*a_scale*a_scale_mul
+conv2_w_dequant_scale,conv2_w_dequant_scale.bin,float32,16,16,patch_embed_mag.5.w_scale,per-OC; int32 acc -> f32
+conv2_b_i32,conv2_b_i32.bin,int32,16,16,patch_embed_mag.5.bias,round(bias_f32 / dequant_scale)
+norm2_w,norm2_w.bin,float32,16,16,patch_embed_mag.7.weight,
+norm2_b,norm2_b.bin,float32,16,16,patch_embed_mag.7.bias,

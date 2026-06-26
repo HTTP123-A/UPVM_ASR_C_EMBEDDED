@@ -1,0 +1,663 @@
+stage_name,member_name,filename,relative_path,dtype,numel,shape,source_key,note
+embed_weight_mag,conv1_w,conv1_w.bin,embed_weight_mag/conv1_w.bin,int8,72,8x1x3x3,patch_embed_mag.0.weight_int8,as stored (no refold)
+embed_weight_mag,conv1_w_quant_scale,conv1_w_quant_scale.bin,embed_weight_mag/conv1_w_quant_scale.bin,float32,1,1,patch_embed_mag.0.a_scale,per-tensor a_scale*a_scale_mul
+embed_weight_mag,conv1_w_dequant_scale,conv1_w_dequant_scale.bin,embed_weight_mag/conv1_w_dequant_scale.bin,float32,8,8,patch_embed_mag.0.w_scale,per-OC; int32 acc -> f32
+embed_weight_mag,conv1_b_i32,conv1_b_i32.bin,embed_weight_mag/conv1_b_i32.bin,int32,8,8,patch_embed_mag.0.bias,round(bias_f32 / dequant_scale)
+embed_weight_mag,norm1_w,norm1_w.bin,embed_weight_mag/norm1_w.bin,float32,8,8,patch_embed_mag.2.weight,
+embed_weight_mag,norm1_b,norm1_b.bin,embed_weight_mag/norm1_b.bin,float32,8,8,patch_embed_mag.2.bias,
+embed_weight_mag,conv2_w,conv2_w.bin,embed_weight_mag/conv2_w.bin,int8,1152,16x8x3x3,patch_embed_mag.5.weight_int8,"act scale folded, requantized per OC"
+embed_weight_mag,conv2_w_quant_scale,conv2_w_quant_scale.bin,embed_weight_mag/conv2_w_quant_scale.bin,float32,8,8,patch_embed_mag.5.a_scale,sq_s*a_scale*a_scale_mul
+embed_weight_mag,conv2_w_dequant_scale,conv2_w_dequant_scale.bin,embed_weight_mag/conv2_w_dequant_scale.bin,float32,16,16,patch_embed_mag.5.w_scale,per-OC; int32 acc -> f32
+embed_weight_mag,conv2_b_i32,conv2_b_i32.bin,embed_weight_mag/conv2_b_i32.bin,int32,16,16,patch_embed_mag.5.bias,round(bias_f32 / dequant_scale)
+embed_weight_mag,norm2_w,norm2_w.bin,embed_weight_mag/norm2_w.bin,float32,16,16,patch_embed_mag.7.weight,
+embed_weight_mag,norm2_b,norm2_b.bin,embed_weight_mag/norm2_b.bin,float32,16,16,patch_embed_mag.7.bias,
+embed_weight_pha,conv1_w,conv1_w.bin,embed_weight_pha/conv1_w.bin,int8,72,8x1x3x3,patch_embed_phase.0.weight_int8,as stored (no refold)
+embed_weight_pha,conv1_w_quant_scale,conv1_w_quant_scale.bin,embed_weight_pha/conv1_w_quant_scale.bin,float32,1,1,patch_embed_phase.0.a_scale,per-tensor a_scale*a_scale_mul
+embed_weight_pha,conv1_w_dequant_scale,conv1_w_dequant_scale.bin,embed_weight_pha/conv1_w_dequant_scale.bin,float32,8,8,patch_embed_phase.0.w_scale,per-OC; int32 acc -> f32
+embed_weight_pha,conv1_b_i32,conv1_b_i32.bin,embed_weight_pha/conv1_b_i32.bin,int32,8,8,patch_embed_phase.0.bias,round(bias_f32 / dequant_scale)
+embed_weight_pha,norm1_w,norm1_w.bin,embed_weight_pha/norm1_w.bin,float32,8,8,patch_embed_phase.2.weight,
+embed_weight_pha,norm1_b,norm1_b.bin,embed_weight_pha/norm1_b.bin,float32,8,8,patch_embed_phase.2.bias,
+embed_weight_pha,conv2_w,conv2_w.bin,embed_weight_pha/conv2_w.bin,int8,1152,16x8x3x3,patch_embed_phase.5.weight_int8,"act scale folded, requantized per OC"
+embed_weight_pha,conv2_w_quant_scale,conv2_w_quant_scale.bin,embed_weight_pha/conv2_w_quant_scale.bin,float32,8,8,patch_embed_phase.5.a_scale,sq_s*a_scale*a_scale_mul
+embed_weight_pha,conv2_w_dequant_scale,conv2_w_dequant_scale.bin,embed_weight_pha/conv2_w_dequant_scale.bin,float32,16,16,patch_embed_phase.5.w_scale,per-OC; int32 acc -> f32
+embed_weight_pha,conv2_b_i32,conv2_b_i32.bin,embed_weight_pha/conv2_b_i32.bin,int32,16,16,patch_embed_phase.5.bias,round(bias_f32 / dequant_scale)
+embed_weight_pha,norm2_w,norm2_w.bin,embed_weight_pha/norm2_w.bin,float32,16,16,patch_embed_phase.7.weight,
+embed_weight_pha,norm2_b,norm2_b.bin,embed_weight_pha/norm2_b.bin,float32,16,16,patch_embed_phase.7.bias,
+pvss_ds_weight_enc0_mag,ssm_in_norm_w,ssm_in_norm_w.bin,pvss_ds_weight_enc0_mag/ssm_in_norm_w.bin,float32,16,16,layers_encoder_mag.0.blocks.0.norm.weight,
+pvss_ds_weight_enc0_mag,ssm_in_norm_b,ssm_in_norm_b.bin,pvss_ds_weight_enc0_mag/ssm_in_norm_b.bin,float32,16,16,layers_encoder_mag.0.blocks.0.norm.bias,
+pvss_ds_weight_enc0_mag,ssm_in_projection_w,ssm_in_projection_w.bin,pvss_ds_weight_enc0_mag/ssm_in_projection_w.bin,int8,4,4x1,layers_encoder_mag.0.blocks.0.ss2d.in_proj.weight_int8,as stored (no refold)
+pvss_ds_weight_enc0_mag,ssm_in_projection_w_quant_scale,ssm_in_projection_w_quant_scale.bin,pvss_ds_weight_enc0_mag/ssm_in_projection_w_quant_scale.bin,float32,1,1,layers_encoder_mag.0.blocks.0.ss2d.in_proj.a_scale,per-tensor a_scale*a_scale_mul
+pvss_ds_weight_enc0_mag,ssm_in_projection_w_dequant_scale,ssm_in_projection_w_dequant_scale.bin,pvss_ds_weight_enc0_mag/ssm_in_projection_w_dequant_scale.bin,float32,4,4,layers_encoder_mag.0.blocks.0.ss2d.in_proj.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc0_mag,ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,pvss_ds_weight_enc0_mag/ssm_dw_conv2d_w.bin,int8,18,2x3x3,layers_encoder_mag.0.blocks.0.ss2d.conv2d.weight_int8,as stored (no refold)
+pvss_ds_weight_enc0_mag,ssm_dw_conv2d_w_quant_scale,ssm_dw_conv2d_w_quant_scale.bin,pvss_ds_weight_enc0_mag/ssm_dw_conv2d_w_quant_scale.bin,float32,2,2,layers_encoder_mag.0.blocks.0.ss2d.conv2d.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc0_mag,ssm_dw_conv2d_w_dequant_scale,ssm_dw_conv2d_w_dequant_scale.bin,pvss_ds_weight_enc0_mag/ssm_dw_conv2d_w_dequant_scale.bin,float32,2,2,layers_encoder_mag.0.blocks.0.ss2d.conv2d.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc0_mag,ssm_dw_conv2d_b_i32,ssm_dw_conv2d_b_i32.bin,pvss_ds_weight_enc0_mag/ssm_dw_conv2d_b_i32.bin,int32,2,2,layers_encoder_mag.0.blocks.0.ss2d.conv2d.bias,round(bias_f32 / dequant_scale)
+pvss_ds_weight_enc0_mag,ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,pvss_ds_weight_enc0_mag/ssm_dw_conv1d_w.bin,float32,24,12x2,layers_encoder_mag.0.blocks.0.ss2d.x_proj_conv.weight,
+pvss_ds_weight_enc0_mag,ssm_dt_projection_w,ssm_dt_projection_w.bin,pvss_ds_weight_enc0_mag/ssm_dt_projection_w.bin,float32,8,8x1,layers_encoder_mag.0.blocks.0.ss2d.dt_proj_conv.weight,
+pvss_ds_weight_enc0_mag,ssm_A,ssm_A.bin,pvss_ds_weight_enc0_mag/ssm_A.bin,float32,8,8x1,layers_encoder_mag.0.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+pvss_ds_weight_enc0_mag,ssm_Ds,ssm_Ds.bin,pvss_ds_weight_enc0_mag/ssm_Ds.bin,float32,8,8,layers_encoder_mag.0.blocks.0.ss2d.Ds,
+pvss_ds_weight_enc0_mag,ssm_delta_bias,ssm_delta_bias.bin,pvss_ds_weight_enc0_mag/ssm_delta_bias.bin,float32,8,8,layers_encoder_mag.0.blocks.0.ss2d.dt_projs_bias,
+pvss_ds_weight_enc0_mag,ssm_out_norm_w,ssm_out_norm_w.bin,pvss_ds_weight_enc0_mag/ssm_out_norm_w.bin,float32,2,2,layers_encoder_mag.0.blocks.0.ss2d.out_norm.weight,
+pvss_ds_weight_enc0_mag,ssm_out_norm_b,ssm_out_norm_b.bin,pvss_ds_weight_enc0_mag/ssm_out_norm_b.bin,float32,2,2,layers_encoder_mag.0.blocks.0.ss2d.out_norm.bias,
+pvss_ds_weight_enc0_mag,ssm_out_projection_w,ssm_out_projection_w.bin,pvss_ds_weight_enc0_mag/ssm_out_projection_w.bin,int8,2,1x2,layers_encoder_mag.0.blocks.0.ss2d.out_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc0_mag,ssm_out_projection_w_quant_scale,ssm_out_projection_w_quant_scale.bin,pvss_ds_weight_enc0_mag/ssm_out_projection_w_quant_scale.bin,float32,2,2,layers_encoder_mag.0.blocks.0.ss2d.out_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc0_mag,ssm_out_projection_w_dequant_scale,ssm_out_projection_w_dequant_scale.bin,pvss_ds_weight_enc0_mag/ssm_out_projection_w_dequant_scale.bin,float32,1,1,layers_encoder_mag.0.blocks.0.ss2d.out_proj.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc0_mag,mlp_norm_w,mlp_norm_w.bin,pvss_ds_weight_enc0_mag/mlp_norm_w.bin,float32,16,16,layers_encoder_mag.0.blocks.0.norm2.weight,
+pvss_ds_weight_enc0_mag,mlp_norm_b,mlp_norm_b.bin,pvss_ds_weight_enc0_mag/mlp_norm_b.bin,float32,16,16,layers_encoder_mag.0.blocks.0.norm2.bias,
+pvss_ds_weight_enc0_mag,mlp_fc1_w,mlp_fc1_w.bin,pvss_ds_weight_enc0_mag/mlp_fc1_w.bin,int8,256,16x16,layers_encoder_mag.0.blocks.0.mlp.fc1.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc0_mag,mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,pvss_ds_weight_enc0_mag/mlp_fc1_w_quant_scale.bin,float32,16,16,layers_encoder_mag.0.blocks.0.mlp.fc1.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc0_mag,mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,pvss_ds_weight_enc0_mag/mlp_fc1_w_dequant_scale.bin,float32,16,16,layers_encoder_mag.0.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc0_mag,mlp_fc1_b_i32,mlp_fc1_b_i32.bin,pvss_ds_weight_enc0_mag/mlp_fc1_b_i32.bin,int32,16,16,layers_encoder_mag.0.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+pvss_ds_weight_enc0_mag,mlp_fc2_w,mlp_fc2_w.bin,pvss_ds_weight_enc0_mag/mlp_fc2_w.bin,int8,512,32x16,layers_encoder_mag.0.blocks.0.mlp.fc2.mlp_dim_redu.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc0_mag,mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,pvss_ds_weight_enc0_mag/mlp_fc2_w_quant_scale.bin,float32,16,16,layers_encoder_mag.0.blocks.0.mlp.fc2.mlp_dim_redu.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc0_mag,mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,pvss_ds_weight_enc0_mag/mlp_fc2_w_dequant_scale.bin,float32,32,32,layers_encoder_mag.0.blocks.0.mlp.fc2.mlp_dim_redu.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc0_mag,mlp_fc_res_w,mlp_fc_res_w.bin,pvss_ds_weight_enc0_mag/mlp_fc_res_w.bin,float32,512,32x16,layers_encoder_mag.0.blocks.0.skip_proj.skip_dim_redu.weight,f32 in ckpt (skip_proj excluded from PTQ)
+pvss_ds_weight_enc0_mag,mlp_fc_res_b,mlp_fc_res_b.bin,pvss_ds_weight_enc0_mag/mlp_fc_res_b.bin,float32,32,32,<generated>,zero bias placeholder
+pvss_ds_weight_enc0_mag,mlp_sumpool_w,mlp_sumpool_w.bin,pvss_ds_weight_enc0_mag/mlp_sumpool_w.bin,float32,64,16x2x2,layers_encoder_mag.0.blocks.0.mlp.fc2.mlp_sumpool.weight,
+pvss_ds_weight_enc0_mag,mlp_dim_reduce_w,mlp_dim_reduce_w.bin,pvss_ds_weight_enc0_mag/mlp_dim_reduce_w.bin,float32,1,1,<unused>,unused optional field
+pvss_ds_weight_enc0_mag,skip_reduce_w,skip_reduce_w.bin,pvss_ds_weight_enc0_mag/skip_reduce_w.bin,float32,1,1,<unused>,unused optional field
+pvss_ds_weight_enc0_pha,ssm_in_norm_w,ssm_in_norm_w.bin,pvss_ds_weight_enc0_pha/ssm_in_norm_w.bin,float32,16,16,layers_encoder_phase.0.blocks.0.norm.weight,
+pvss_ds_weight_enc0_pha,ssm_in_norm_b,ssm_in_norm_b.bin,pvss_ds_weight_enc0_pha/ssm_in_norm_b.bin,float32,16,16,layers_encoder_phase.0.blocks.0.norm.bias,
+pvss_ds_weight_enc0_pha,ssm_in_projection_w,ssm_in_projection_w.bin,pvss_ds_weight_enc0_pha/ssm_in_projection_w.bin,int8,4,4x1,layers_encoder_phase.0.blocks.0.ss2d.in_proj.weight_int8,as stored (no refold)
+pvss_ds_weight_enc0_pha,ssm_in_projection_w_quant_scale,ssm_in_projection_w_quant_scale.bin,pvss_ds_weight_enc0_pha/ssm_in_projection_w_quant_scale.bin,float32,1,1,layers_encoder_phase.0.blocks.0.ss2d.in_proj.a_scale,per-tensor a_scale*a_scale_mul
+pvss_ds_weight_enc0_pha,ssm_in_projection_w_dequant_scale,ssm_in_projection_w_dequant_scale.bin,pvss_ds_weight_enc0_pha/ssm_in_projection_w_dequant_scale.bin,float32,4,4,layers_encoder_phase.0.blocks.0.ss2d.in_proj.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc0_pha,ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,pvss_ds_weight_enc0_pha/ssm_dw_conv2d_w.bin,int8,18,2x3x3,layers_encoder_phase.0.blocks.0.ss2d.conv2d.weight_int8,as stored (no refold)
+pvss_ds_weight_enc0_pha,ssm_dw_conv2d_w_quant_scale,ssm_dw_conv2d_w_quant_scale.bin,pvss_ds_weight_enc0_pha/ssm_dw_conv2d_w_quant_scale.bin,float32,2,2,layers_encoder_phase.0.blocks.0.ss2d.conv2d.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc0_pha,ssm_dw_conv2d_w_dequant_scale,ssm_dw_conv2d_w_dequant_scale.bin,pvss_ds_weight_enc0_pha/ssm_dw_conv2d_w_dequant_scale.bin,float32,2,2,layers_encoder_phase.0.blocks.0.ss2d.conv2d.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc0_pha,ssm_dw_conv2d_b_i32,ssm_dw_conv2d_b_i32.bin,pvss_ds_weight_enc0_pha/ssm_dw_conv2d_b_i32.bin,int32,2,2,layers_encoder_phase.0.blocks.0.ss2d.conv2d.bias,round(bias_f32 / dequant_scale)
+pvss_ds_weight_enc0_pha,ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,pvss_ds_weight_enc0_pha/ssm_dw_conv1d_w.bin,float32,24,12x2,layers_encoder_phase.0.blocks.0.ss2d.x_proj_conv.weight,
+pvss_ds_weight_enc0_pha,ssm_dt_projection_w,ssm_dt_projection_w.bin,pvss_ds_weight_enc0_pha/ssm_dt_projection_w.bin,float32,8,8x1,layers_encoder_phase.0.blocks.0.ss2d.dt_proj_conv.weight,
+pvss_ds_weight_enc0_pha,ssm_A,ssm_A.bin,pvss_ds_weight_enc0_pha/ssm_A.bin,float32,8,8x1,layers_encoder_phase.0.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+pvss_ds_weight_enc0_pha,ssm_Ds,ssm_Ds.bin,pvss_ds_weight_enc0_pha/ssm_Ds.bin,float32,8,8,layers_encoder_phase.0.blocks.0.ss2d.Ds,
+pvss_ds_weight_enc0_pha,ssm_delta_bias,ssm_delta_bias.bin,pvss_ds_weight_enc0_pha/ssm_delta_bias.bin,float32,8,8,layers_encoder_phase.0.blocks.0.ss2d.dt_projs_bias,
+pvss_ds_weight_enc0_pha,ssm_out_norm_w,ssm_out_norm_w.bin,pvss_ds_weight_enc0_pha/ssm_out_norm_w.bin,float32,2,2,layers_encoder_phase.0.blocks.0.ss2d.out_norm.weight,
+pvss_ds_weight_enc0_pha,ssm_out_norm_b,ssm_out_norm_b.bin,pvss_ds_weight_enc0_pha/ssm_out_norm_b.bin,float32,2,2,layers_encoder_phase.0.blocks.0.ss2d.out_norm.bias,
+pvss_ds_weight_enc0_pha,ssm_out_projection_w,ssm_out_projection_w.bin,pvss_ds_weight_enc0_pha/ssm_out_projection_w.bin,int8,2,1x2,layers_encoder_phase.0.blocks.0.ss2d.out_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc0_pha,ssm_out_projection_w_quant_scale,ssm_out_projection_w_quant_scale.bin,pvss_ds_weight_enc0_pha/ssm_out_projection_w_quant_scale.bin,float32,2,2,layers_encoder_phase.0.blocks.0.ss2d.out_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc0_pha,ssm_out_projection_w_dequant_scale,ssm_out_projection_w_dequant_scale.bin,pvss_ds_weight_enc0_pha/ssm_out_projection_w_dequant_scale.bin,float32,1,1,layers_encoder_phase.0.blocks.0.ss2d.out_proj.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc0_pha,mlp_norm_w,mlp_norm_w.bin,pvss_ds_weight_enc0_pha/mlp_norm_w.bin,float32,16,16,layers_encoder_phase.0.blocks.0.norm2.weight,
+pvss_ds_weight_enc0_pha,mlp_norm_b,mlp_norm_b.bin,pvss_ds_weight_enc0_pha/mlp_norm_b.bin,float32,16,16,layers_encoder_phase.0.blocks.0.norm2.bias,
+pvss_ds_weight_enc0_pha,mlp_fc1_w,mlp_fc1_w.bin,pvss_ds_weight_enc0_pha/mlp_fc1_w.bin,int8,256,16x16,layers_encoder_phase.0.blocks.0.mlp.fc1.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc0_pha,mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,pvss_ds_weight_enc0_pha/mlp_fc1_w_quant_scale.bin,float32,16,16,layers_encoder_phase.0.blocks.0.mlp.fc1.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc0_pha,mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,pvss_ds_weight_enc0_pha/mlp_fc1_w_dequant_scale.bin,float32,16,16,layers_encoder_phase.0.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc0_pha,mlp_fc1_b_i32,mlp_fc1_b_i32.bin,pvss_ds_weight_enc0_pha/mlp_fc1_b_i32.bin,int32,16,16,layers_encoder_phase.0.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+pvss_ds_weight_enc0_pha,mlp_fc2_w,mlp_fc2_w.bin,pvss_ds_weight_enc0_pha/mlp_fc2_w.bin,int8,512,32x16,layers_encoder_phase.0.blocks.0.mlp.fc2.mlp_dim_redu.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc0_pha,mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,pvss_ds_weight_enc0_pha/mlp_fc2_w_quant_scale.bin,float32,16,16,layers_encoder_phase.0.blocks.0.mlp.fc2.mlp_dim_redu.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc0_pha,mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,pvss_ds_weight_enc0_pha/mlp_fc2_w_dequant_scale.bin,float32,32,32,layers_encoder_phase.0.blocks.0.mlp.fc2.mlp_dim_redu.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc0_pha,mlp_fc_res_w,mlp_fc_res_w.bin,pvss_ds_weight_enc0_pha/mlp_fc_res_w.bin,float32,512,32x16,layers_encoder_phase.0.blocks.0.skip_proj.skip_dim_redu.weight,f32 in ckpt (skip_proj excluded from PTQ)
+pvss_ds_weight_enc0_pha,mlp_fc_res_b,mlp_fc_res_b.bin,pvss_ds_weight_enc0_pha/mlp_fc_res_b.bin,float32,32,32,<generated>,zero bias placeholder
+pvss_ds_weight_enc0_pha,mlp_sumpool_w,mlp_sumpool_w.bin,pvss_ds_weight_enc0_pha/mlp_sumpool_w.bin,float32,64,16x2x2,layers_encoder_phase.0.blocks.0.mlp.fc2.mlp_sumpool.weight,
+pvss_ds_weight_enc0_pha,mlp_dim_reduce_w,mlp_dim_reduce_w.bin,pvss_ds_weight_enc0_pha/mlp_dim_reduce_w.bin,float32,1,1,<unused>,unused optional field
+pvss_ds_weight_enc0_pha,skip_reduce_w,skip_reduce_w.bin,pvss_ds_weight_enc0_pha/skip_reduce_w.bin,float32,1,1,<unused>,unused optional field
+pvss_ds_weight_enc1_mag,ssm_in_norm_w,ssm_in_norm_w.bin,pvss_ds_weight_enc1_mag/ssm_in_norm_w.bin,float32,32,32,layers_encoder_mag.1.blocks.0.norm.weight,
+pvss_ds_weight_enc1_mag,ssm_in_norm_b,ssm_in_norm_b.bin,pvss_ds_weight_enc1_mag/ssm_in_norm_b.bin,float32,32,32,layers_encoder_mag.1.blocks.0.norm.bias,
+pvss_ds_weight_enc1_mag,ssm_in_projection_w,ssm_in_projection_w.bin,pvss_ds_weight_enc1_mag/ssm_in_projection_w.bin,int8,16,8x2,layers_encoder_mag.1.blocks.0.ss2d.in_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc1_mag,ssm_in_projection_w_quant_scale,ssm_in_projection_w_quant_scale.bin,pvss_ds_weight_enc1_mag/ssm_in_projection_w_quant_scale.bin,float32,2,2,layers_encoder_mag.1.blocks.0.ss2d.in_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc1_mag,ssm_in_projection_w_dequant_scale,ssm_in_projection_w_dequant_scale.bin,pvss_ds_weight_enc1_mag/ssm_in_projection_w_dequant_scale.bin,float32,8,8,layers_encoder_mag.1.blocks.0.ss2d.in_proj.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc1_mag,ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,pvss_ds_weight_enc1_mag/ssm_dw_conv2d_w.bin,int8,36,4x3x3,layers_encoder_mag.1.blocks.0.ss2d.conv2d.weight_int8,as stored (no refold)
+pvss_ds_weight_enc1_mag,ssm_dw_conv2d_w_quant_scale,ssm_dw_conv2d_w_quant_scale.bin,pvss_ds_weight_enc1_mag/ssm_dw_conv2d_w_quant_scale.bin,float32,4,4,layers_encoder_mag.1.blocks.0.ss2d.conv2d.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc1_mag,ssm_dw_conv2d_w_dequant_scale,ssm_dw_conv2d_w_dequant_scale.bin,pvss_ds_weight_enc1_mag/ssm_dw_conv2d_w_dequant_scale.bin,float32,4,4,layers_encoder_mag.1.blocks.0.ss2d.conv2d.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc1_mag,ssm_dw_conv2d_b_i32,ssm_dw_conv2d_b_i32.bin,pvss_ds_weight_enc1_mag/ssm_dw_conv2d_b_i32.bin,int32,4,4,layers_encoder_mag.1.blocks.0.ss2d.conv2d.bias,round(bias_f32 / dequant_scale)
+pvss_ds_weight_enc1_mag,ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,pvss_ds_weight_enc1_mag/ssm_dw_conv1d_w.bin,float32,48,12x4,layers_encoder_mag.1.blocks.0.ss2d.x_proj_conv.weight,
+pvss_ds_weight_enc1_mag,ssm_dt_projection_w,ssm_dt_projection_w.bin,pvss_ds_weight_enc1_mag/ssm_dt_projection_w.bin,float32,16,16x1,layers_encoder_mag.1.blocks.0.ss2d.dt_proj_conv.weight,
+pvss_ds_weight_enc1_mag,ssm_A,ssm_A.bin,pvss_ds_weight_enc1_mag/ssm_A.bin,float32,16,16x1,layers_encoder_mag.1.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+pvss_ds_weight_enc1_mag,ssm_Ds,ssm_Ds.bin,pvss_ds_weight_enc1_mag/ssm_Ds.bin,float32,16,16,layers_encoder_mag.1.blocks.0.ss2d.Ds,
+pvss_ds_weight_enc1_mag,ssm_delta_bias,ssm_delta_bias.bin,pvss_ds_weight_enc1_mag/ssm_delta_bias.bin,float32,16,16,layers_encoder_mag.1.blocks.0.ss2d.dt_projs_bias,
+pvss_ds_weight_enc1_mag,ssm_out_norm_w,ssm_out_norm_w.bin,pvss_ds_weight_enc1_mag/ssm_out_norm_w.bin,float32,4,4,layers_encoder_mag.1.blocks.0.ss2d.out_norm.weight,
+pvss_ds_weight_enc1_mag,ssm_out_norm_b,ssm_out_norm_b.bin,pvss_ds_weight_enc1_mag/ssm_out_norm_b.bin,float32,4,4,layers_encoder_mag.1.blocks.0.ss2d.out_norm.bias,
+pvss_ds_weight_enc1_mag,ssm_out_projection_w,ssm_out_projection_w.bin,pvss_ds_weight_enc1_mag/ssm_out_projection_w.bin,int8,8,2x4,layers_encoder_mag.1.blocks.0.ss2d.out_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc1_mag,ssm_out_projection_w_quant_scale,ssm_out_projection_w_quant_scale.bin,pvss_ds_weight_enc1_mag/ssm_out_projection_w_quant_scale.bin,float32,4,4,layers_encoder_mag.1.blocks.0.ss2d.out_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc1_mag,ssm_out_projection_w_dequant_scale,ssm_out_projection_w_dequant_scale.bin,pvss_ds_weight_enc1_mag/ssm_out_projection_w_dequant_scale.bin,float32,2,2,layers_encoder_mag.1.blocks.0.ss2d.out_proj.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc1_mag,mlp_norm_w,mlp_norm_w.bin,pvss_ds_weight_enc1_mag/mlp_norm_w.bin,float32,32,32,layers_encoder_mag.1.blocks.0.norm2.weight,
+pvss_ds_weight_enc1_mag,mlp_norm_b,mlp_norm_b.bin,pvss_ds_weight_enc1_mag/mlp_norm_b.bin,float32,32,32,layers_encoder_mag.1.blocks.0.norm2.bias,
+pvss_ds_weight_enc1_mag,mlp_fc1_w,mlp_fc1_w.bin,pvss_ds_weight_enc1_mag/mlp_fc1_w.bin,int8,1024,32x32,layers_encoder_mag.1.blocks.0.mlp.fc1.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc1_mag,mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,pvss_ds_weight_enc1_mag/mlp_fc1_w_quant_scale.bin,float32,32,32,layers_encoder_mag.1.blocks.0.mlp.fc1.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc1_mag,mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,pvss_ds_weight_enc1_mag/mlp_fc1_w_dequant_scale.bin,float32,32,32,layers_encoder_mag.1.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc1_mag,mlp_fc1_b_i32,mlp_fc1_b_i32.bin,pvss_ds_weight_enc1_mag/mlp_fc1_b_i32.bin,int32,32,32,layers_encoder_mag.1.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+pvss_ds_weight_enc1_mag,mlp_fc2_w,mlp_fc2_w.bin,pvss_ds_weight_enc1_mag/mlp_fc2_w.bin,int8,2048,64x32,layers_encoder_mag.1.blocks.0.mlp.fc2.mlp_dim_redu.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc1_mag,mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,pvss_ds_weight_enc1_mag/mlp_fc2_w_quant_scale.bin,float32,32,32,layers_encoder_mag.1.blocks.0.mlp.fc2.mlp_dim_redu.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc1_mag,mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,pvss_ds_weight_enc1_mag/mlp_fc2_w_dequant_scale.bin,float32,64,64,layers_encoder_mag.1.blocks.0.mlp.fc2.mlp_dim_redu.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc1_mag,mlp_fc_res_w,mlp_fc_res_w.bin,pvss_ds_weight_enc1_mag/mlp_fc_res_w.bin,float32,2048,64x32,layers_encoder_mag.1.blocks.0.skip_proj.skip_dim_redu.weight,f32 in ckpt (skip_proj excluded from PTQ)
+pvss_ds_weight_enc1_mag,mlp_fc_res_b,mlp_fc_res_b.bin,pvss_ds_weight_enc1_mag/mlp_fc_res_b.bin,float32,64,64,<generated>,zero bias placeholder
+pvss_ds_weight_enc1_mag,mlp_sumpool_w,mlp_sumpool_w.bin,pvss_ds_weight_enc1_mag/mlp_sumpool_w.bin,float32,128,32x2x2,layers_encoder_mag.1.blocks.0.mlp.fc2.mlp_sumpool.weight,
+pvss_ds_weight_enc1_mag,mlp_dim_reduce_w,mlp_dim_reduce_w.bin,pvss_ds_weight_enc1_mag/mlp_dim_reduce_w.bin,float32,1,1,<unused>,unused optional field
+pvss_ds_weight_enc1_mag,skip_reduce_w,skip_reduce_w.bin,pvss_ds_weight_enc1_mag/skip_reduce_w.bin,float32,1,1,<unused>,unused optional field
+pvss_ds_weight_enc1_pha,ssm_in_norm_w,ssm_in_norm_w.bin,pvss_ds_weight_enc1_pha/ssm_in_norm_w.bin,float32,32,32,layers_encoder_phase.1.blocks.0.norm.weight,
+pvss_ds_weight_enc1_pha,ssm_in_norm_b,ssm_in_norm_b.bin,pvss_ds_weight_enc1_pha/ssm_in_norm_b.bin,float32,32,32,layers_encoder_phase.1.blocks.0.norm.bias,
+pvss_ds_weight_enc1_pha,ssm_in_projection_w,ssm_in_projection_w.bin,pvss_ds_weight_enc1_pha/ssm_in_projection_w.bin,int8,16,8x2,layers_encoder_phase.1.blocks.0.ss2d.in_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc1_pha,ssm_in_projection_w_quant_scale,ssm_in_projection_w_quant_scale.bin,pvss_ds_weight_enc1_pha/ssm_in_projection_w_quant_scale.bin,float32,2,2,layers_encoder_phase.1.blocks.0.ss2d.in_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc1_pha,ssm_in_projection_w_dequant_scale,ssm_in_projection_w_dequant_scale.bin,pvss_ds_weight_enc1_pha/ssm_in_projection_w_dequant_scale.bin,float32,8,8,layers_encoder_phase.1.blocks.0.ss2d.in_proj.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc1_pha,ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,pvss_ds_weight_enc1_pha/ssm_dw_conv2d_w.bin,int8,36,4x3x3,layers_encoder_phase.1.blocks.0.ss2d.conv2d.weight_int8,as stored (no refold)
+pvss_ds_weight_enc1_pha,ssm_dw_conv2d_w_quant_scale,ssm_dw_conv2d_w_quant_scale.bin,pvss_ds_weight_enc1_pha/ssm_dw_conv2d_w_quant_scale.bin,float32,4,4,layers_encoder_phase.1.blocks.0.ss2d.conv2d.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc1_pha,ssm_dw_conv2d_w_dequant_scale,ssm_dw_conv2d_w_dequant_scale.bin,pvss_ds_weight_enc1_pha/ssm_dw_conv2d_w_dequant_scale.bin,float32,4,4,layers_encoder_phase.1.blocks.0.ss2d.conv2d.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc1_pha,ssm_dw_conv2d_b_i32,ssm_dw_conv2d_b_i32.bin,pvss_ds_weight_enc1_pha/ssm_dw_conv2d_b_i32.bin,int32,4,4,layers_encoder_phase.1.blocks.0.ss2d.conv2d.bias,round(bias_f32 / dequant_scale)
+pvss_ds_weight_enc1_pha,ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,pvss_ds_weight_enc1_pha/ssm_dw_conv1d_w.bin,float32,48,12x4,layers_encoder_phase.1.blocks.0.ss2d.x_proj_conv.weight,
+pvss_ds_weight_enc1_pha,ssm_dt_projection_w,ssm_dt_projection_w.bin,pvss_ds_weight_enc1_pha/ssm_dt_projection_w.bin,float32,16,16x1,layers_encoder_phase.1.blocks.0.ss2d.dt_proj_conv.weight,
+pvss_ds_weight_enc1_pha,ssm_A,ssm_A.bin,pvss_ds_weight_enc1_pha/ssm_A.bin,float32,16,16x1,layers_encoder_phase.1.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+pvss_ds_weight_enc1_pha,ssm_Ds,ssm_Ds.bin,pvss_ds_weight_enc1_pha/ssm_Ds.bin,float32,16,16,layers_encoder_phase.1.blocks.0.ss2d.Ds,
+pvss_ds_weight_enc1_pha,ssm_delta_bias,ssm_delta_bias.bin,pvss_ds_weight_enc1_pha/ssm_delta_bias.bin,float32,16,16,layers_encoder_phase.1.blocks.0.ss2d.dt_projs_bias,
+pvss_ds_weight_enc1_pha,ssm_out_norm_w,ssm_out_norm_w.bin,pvss_ds_weight_enc1_pha/ssm_out_norm_w.bin,float32,4,4,layers_encoder_phase.1.blocks.0.ss2d.out_norm.weight,
+pvss_ds_weight_enc1_pha,ssm_out_norm_b,ssm_out_norm_b.bin,pvss_ds_weight_enc1_pha/ssm_out_norm_b.bin,float32,4,4,layers_encoder_phase.1.blocks.0.ss2d.out_norm.bias,
+pvss_ds_weight_enc1_pha,ssm_out_projection_w,ssm_out_projection_w.bin,pvss_ds_weight_enc1_pha/ssm_out_projection_w.bin,int8,8,2x4,layers_encoder_phase.1.blocks.0.ss2d.out_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc1_pha,ssm_out_projection_w_quant_scale,ssm_out_projection_w_quant_scale.bin,pvss_ds_weight_enc1_pha/ssm_out_projection_w_quant_scale.bin,float32,4,4,layers_encoder_phase.1.blocks.0.ss2d.out_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc1_pha,ssm_out_projection_w_dequant_scale,ssm_out_projection_w_dequant_scale.bin,pvss_ds_weight_enc1_pha/ssm_out_projection_w_dequant_scale.bin,float32,2,2,layers_encoder_phase.1.blocks.0.ss2d.out_proj.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc1_pha,mlp_norm_w,mlp_norm_w.bin,pvss_ds_weight_enc1_pha/mlp_norm_w.bin,float32,32,32,layers_encoder_phase.1.blocks.0.norm2.weight,
+pvss_ds_weight_enc1_pha,mlp_norm_b,mlp_norm_b.bin,pvss_ds_weight_enc1_pha/mlp_norm_b.bin,float32,32,32,layers_encoder_phase.1.blocks.0.norm2.bias,
+pvss_ds_weight_enc1_pha,mlp_fc1_w,mlp_fc1_w.bin,pvss_ds_weight_enc1_pha/mlp_fc1_w.bin,int8,1024,32x32,layers_encoder_phase.1.blocks.0.mlp.fc1.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc1_pha,mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,pvss_ds_weight_enc1_pha/mlp_fc1_w_quant_scale.bin,float32,32,32,layers_encoder_phase.1.blocks.0.mlp.fc1.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc1_pha,mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,pvss_ds_weight_enc1_pha/mlp_fc1_w_dequant_scale.bin,float32,32,32,layers_encoder_phase.1.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc1_pha,mlp_fc1_b_i32,mlp_fc1_b_i32.bin,pvss_ds_weight_enc1_pha/mlp_fc1_b_i32.bin,int32,32,32,layers_encoder_phase.1.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+pvss_ds_weight_enc1_pha,mlp_fc2_w,mlp_fc2_w.bin,pvss_ds_weight_enc1_pha/mlp_fc2_w.bin,int8,2048,64x32,layers_encoder_phase.1.blocks.0.mlp.fc2.mlp_dim_redu.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc1_pha,mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,pvss_ds_weight_enc1_pha/mlp_fc2_w_quant_scale.bin,float32,32,32,layers_encoder_phase.1.blocks.0.mlp.fc2.mlp_dim_redu.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc1_pha,mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,pvss_ds_weight_enc1_pha/mlp_fc2_w_dequant_scale.bin,float32,64,64,layers_encoder_phase.1.blocks.0.mlp.fc2.mlp_dim_redu.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc1_pha,mlp_fc_res_w,mlp_fc_res_w.bin,pvss_ds_weight_enc1_pha/mlp_fc_res_w.bin,float32,2048,64x32,layers_encoder_phase.1.blocks.0.skip_proj.skip_dim_redu.weight,f32 in ckpt (skip_proj excluded from PTQ)
+pvss_ds_weight_enc1_pha,mlp_fc_res_b,mlp_fc_res_b.bin,pvss_ds_weight_enc1_pha/mlp_fc_res_b.bin,float32,64,64,<generated>,zero bias placeholder
+pvss_ds_weight_enc1_pha,mlp_sumpool_w,mlp_sumpool_w.bin,pvss_ds_weight_enc1_pha/mlp_sumpool_w.bin,float32,128,32x2x2,layers_encoder_phase.1.blocks.0.mlp.fc2.mlp_sumpool.weight,
+pvss_ds_weight_enc1_pha,mlp_dim_reduce_w,mlp_dim_reduce_w.bin,pvss_ds_weight_enc1_pha/mlp_dim_reduce_w.bin,float32,1,1,<unused>,unused optional field
+pvss_ds_weight_enc1_pha,skip_reduce_w,skip_reduce_w.bin,pvss_ds_weight_enc1_pha/skip_reduce_w.bin,float32,1,1,<unused>,unused optional field
+pvss_ds_weight_enc2_mag,ssm_in_norm_w,ssm_in_norm_w.bin,pvss_ds_weight_enc2_mag/ssm_in_norm_w.bin,float32,64,64,layers_encoder_mag.2.blocks.0.norm.weight,
+pvss_ds_weight_enc2_mag,ssm_in_norm_b,ssm_in_norm_b.bin,pvss_ds_weight_enc2_mag/ssm_in_norm_b.bin,float32,64,64,layers_encoder_mag.2.blocks.0.norm.bias,
+pvss_ds_weight_enc2_mag,ssm_in_projection_w,ssm_in_projection_w.bin,pvss_ds_weight_enc2_mag/ssm_in_projection_w.bin,int8,64,16x4,layers_encoder_mag.2.blocks.0.ss2d.in_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc2_mag,ssm_in_projection_w_quant_scale,ssm_in_projection_w_quant_scale.bin,pvss_ds_weight_enc2_mag/ssm_in_projection_w_quant_scale.bin,float32,4,4,layers_encoder_mag.2.blocks.0.ss2d.in_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc2_mag,ssm_in_projection_w_dequant_scale,ssm_in_projection_w_dequant_scale.bin,pvss_ds_weight_enc2_mag/ssm_in_projection_w_dequant_scale.bin,float32,16,16,layers_encoder_mag.2.blocks.0.ss2d.in_proj.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc2_mag,ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,pvss_ds_weight_enc2_mag/ssm_dw_conv2d_w.bin,int8,72,8x3x3,layers_encoder_mag.2.blocks.0.ss2d.conv2d.weight_int8,as stored (no refold)
+pvss_ds_weight_enc2_mag,ssm_dw_conv2d_w_quant_scale,ssm_dw_conv2d_w_quant_scale.bin,pvss_ds_weight_enc2_mag/ssm_dw_conv2d_w_quant_scale.bin,float32,8,8,layers_encoder_mag.2.blocks.0.ss2d.conv2d.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc2_mag,ssm_dw_conv2d_w_dequant_scale,ssm_dw_conv2d_w_dequant_scale.bin,pvss_ds_weight_enc2_mag/ssm_dw_conv2d_w_dequant_scale.bin,float32,8,8,layers_encoder_mag.2.blocks.0.ss2d.conv2d.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc2_mag,ssm_dw_conv2d_b_i32,ssm_dw_conv2d_b_i32.bin,pvss_ds_weight_enc2_mag/ssm_dw_conv2d_b_i32.bin,int32,8,8,layers_encoder_mag.2.blocks.0.ss2d.conv2d.bias,round(bias_f32 / dequant_scale)
+pvss_ds_weight_enc2_mag,ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,pvss_ds_weight_enc2_mag/ssm_dw_conv1d_w.bin,float32,96,12x8,layers_encoder_mag.2.blocks.0.ss2d.x_proj_conv.weight,
+pvss_ds_weight_enc2_mag,ssm_dt_projection_w,ssm_dt_projection_w.bin,pvss_ds_weight_enc2_mag/ssm_dt_projection_w.bin,float32,32,32x1,layers_encoder_mag.2.blocks.0.ss2d.dt_proj_conv.weight,
+pvss_ds_weight_enc2_mag,ssm_A,ssm_A.bin,pvss_ds_weight_enc2_mag/ssm_A.bin,float32,32,32x1,layers_encoder_mag.2.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+pvss_ds_weight_enc2_mag,ssm_Ds,ssm_Ds.bin,pvss_ds_weight_enc2_mag/ssm_Ds.bin,float32,32,32,layers_encoder_mag.2.blocks.0.ss2d.Ds,
+pvss_ds_weight_enc2_mag,ssm_delta_bias,ssm_delta_bias.bin,pvss_ds_weight_enc2_mag/ssm_delta_bias.bin,float32,32,32,layers_encoder_mag.2.blocks.0.ss2d.dt_projs_bias,
+pvss_ds_weight_enc2_mag,ssm_out_norm_w,ssm_out_norm_w.bin,pvss_ds_weight_enc2_mag/ssm_out_norm_w.bin,float32,8,8,layers_encoder_mag.2.blocks.0.ss2d.out_norm.weight,
+pvss_ds_weight_enc2_mag,ssm_out_norm_b,ssm_out_norm_b.bin,pvss_ds_weight_enc2_mag/ssm_out_norm_b.bin,float32,8,8,layers_encoder_mag.2.blocks.0.ss2d.out_norm.bias,
+pvss_ds_weight_enc2_mag,ssm_out_projection_w,ssm_out_projection_w.bin,pvss_ds_weight_enc2_mag/ssm_out_projection_w.bin,int8,32,4x8,layers_encoder_mag.2.blocks.0.ss2d.out_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc2_mag,ssm_out_projection_w_quant_scale,ssm_out_projection_w_quant_scale.bin,pvss_ds_weight_enc2_mag/ssm_out_projection_w_quant_scale.bin,float32,8,8,layers_encoder_mag.2.blocks.0.ss2d.out_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc2_mag,ssm_out_projection_w_dequant_scale,ssm_out_projection_w_dequant_scale.bin,pvss_ds_weight_enc2_mag/ssm_out_projection_w_dequant_scale.bin,float32,4,4,layers_encoder_mag.2.blocks.0.ss2d.out_proj.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc2_mag,mlp_norm_w,mlp_norm_w.bin,pvss_ds_weight_enc2_mag/mlp_norm_w.bin,float32,64,64,layers_encoder_mag.2.blocks.0.norm2.weight,
+pvss_ds_weight_enc2_mag,mlp_norm_b,mlp_norm_b.bin,pvss_ds_weight_enc2_mag/mlp_norm_b.bin,float32,64,64,layers_encoder_mag.2.blocks.0.norm2.bias,
+pvss_ds_weight_enc2_mag,mlp_fc1_w,mlp_fc1_w.bin,pvss_ds_weight_enc2_mag/mlp_fc1_w.bin,int8,4096,64x64,layers_encoder_mag.2.blocks.0.mlp.fc1.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc2_mag,mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,pvss_ds_weight_enc2_mag/mlp_fc1_w_quant_scale.bin,float32,64,64,layers_encoder_mag.2.blocks.0.mlp.fc1.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc2_mag,mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,pvss_ds_weight_enc2_mag/mlp_fc1_w_dequant_scale.bin,float32,64,64,layers_encoder_mag.2.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc2_mag,mlp_fc1_b_i32,mlp_fc1_b_i32.bin,pvss_ds_weight_enc2_mag/mlp_fc1_b_i32.bin,int32,64,64,layers_encoder_mag.2.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+pvss_ds_weight_enc2_mag,mlp_fc2_w,mlp_fc2_w.bin,pvss_ds_weight_enc2_mag/mlp_fc2_w.bin,int8,8192,128x64,layers_encoder_mag.2.blocks.0.mlp.fc2.mlp_dim_redu.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc2_mag,mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,pvss_ds_weight_enc2_mag/mlp_fc2_w_quant_scale.bin,float32,64,64,layers_encoder_mag.2.blocks.0.mlp.fc2.mlp_dim_redu.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc2_mag,mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,pvss_ds_weight_enc2_mag/mlp_fc2_w_dequant_scale.bin,float32,128,128,layers_encoder_mag.2.blocks.0.mlp.fc2.mlp_dim_redu.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc2_mag,mlp_fc_res_w,mlp_fc_res_w.bin,pvss_ds_weight_enc2_mag/mlp_fc_res_w.bin,float32,8192,128x64,layers_encoder_mag.2.blocks.0.skip_proj.skip_dim_redu.weight,f32 in ckpt (skip_proj excluded from PTQ)
+pvss_ds_weight_enc2_mag,mlp_fc_res_b,mlp_fc_res_b.bin,pvss_ds_weight_enc2_mag/mlp_fc_res_b.bin,float32,128,128,<generated>,zero bias placeholder
+pvss_ds_weight_enc2_mag,mlp_sumpool_w,mlp_sumpool_w.bin,pvss_ds_weight_enc2_mag/mlp_sumpool_w.bin,float32,256,64x2x2,layers_encoder_mag.2.blocks.0.mlp.fc2.mlp_sumpool.weight,
+pvss_ds_weight_enc2_mag,mlp_dim_reduce_w,mlp_dim_reduce_w.bin,pvss_ds_weight_enc2_mag/mlp_dim_reduce_w.bin,float32,1,1,<unused>,unused optional field
+pvss_ds_weight_enc2_mag,skip_reduce_w,skip_reduce_w.bin,pvss_ds_weight_enc2_mag/skip_reduce_w.bin,float32,1,1,<unused>,unused optional field
+pvss_ds_weight_enc2_pha,ssm_in_norm_w,ssm_in_norm_w.bin,pvss_ds_weight_enc2_pha/ssm_in_norm_w.bin,float32,64,64,layers_encoder_phase.2.blocks.0.norm.weight,
+pvss_ds_weight_enc2_pha,ssm_in_norm_b,ssm_in_norm_b.bin,pvss_ds_weight_enc2_pha/ssm_in_norm_b.bin,float32,64,64,layers_encoder_phase.2.blocks.0.norm.bias,
+pvss_ds_weight_enc2_pha,ssm_in_projection_w,ssm_in_projection_w.bin,pvss_ds_weight_enc2_pha/ssm_in_projection_w.bin,int8,64,16x4,layers_encoder_phase.2.blocks.0.ss2d.in_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc2_pha,ssm_in_projection_w_quant_scale,ssm_in_projection_w_quant_scale.bin,pvss_ds_weight_enc2_pha/ssm_in_projection_w_quant_scale.bin,float32,4,4,layers_encoder_phase.2.blocks.0.ss2d.in_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc2_pha,ssm_in_projection_w_dequant_scale,ssm_in_projection_w_dequant_scale.bin,pvss_ds_weight_enc2_pha/ssm_in_projection_w_dequant_scale.bin,float32,16,16,layers_encoder_phase.2.blocks.0.ss2d.in_proj.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc2_pha,ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,pvss_ds_weight_enc2_pha/ssm_dw_conv2d_w.bin,int8,72,8x3x3,layers_encoder_phase.2.blocks.0.ss2d.conv2d.weight_int8,as stored (no refold)
+pvss_ds_weight_enc2_pha,ssm_dw_conv2d_w_quant_scale,ssm_dw_conv2d_w_quant_scale.bin,pvss_ds_weight_enc2_pha/ssm_dw_conv2d_w_quant_scale.bin,float32,8,8,layers_encoder_phase.2.blocks.0.ss2d.conv2d.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc2_pha,ssm_dw_conv2d_w_dequant_scale,ssm_dw_conv2d_w_dequant_scale.bin,pvss_ds_weight_enc2_pha/ssm_dw_conv2d_w_dequant_scale.bin,float32,8,8,layers_encoder_phase.2.blocks.0.ss2d.conv2d.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc2_pha,ssm_dw_conv2d_b_i32,ssm_dw_conv2d_b_i32.bin,pvss_ds_weight_enc2_pha/ssm_dw_conv2d_b_i32.bin,int32,8,8,layers_encoder_phase.2.blocks.0.ss2d.conv2d.bias,round(bias_f32 / dequant_scale)
+pvss_ds_weight_enc2_pha,ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,pvss_ds_weight_enc2_pha/ssm_dw_conv1d_w.bin,float32,96,12x8,layers_encoder_phase.2.blocks.0.ss2d.x_proj_conv.weight,
+pvss_ds_weight_enc2_pha,ssm_dt_projection_w,ssm_dt_projection_w.bin,pvss_ds_weight_enc2_pha/ssm_dt_projection_w.bin,float32,32,32x1,layers_encoder_phase.2.blocks.0.ss2d.dt_proj_conv.weight,
+pvss_ds_weight_enc2_pha,ssm_A,ssm_A.bin,pvss_ds_weight_enc2_pha/ssm_A.bin,float32,32,32x1,layers_encoder_phase.2.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+pvss_ds_weight_enc2_pha,ssm_Ds,ssm_Ds.bin,pvss_ds_weight_enc2_pha/ssm_Ds.bin,float32,32,32,layers_encoder_phase.2.blocks.0.ss2d.Ds,
+pvss_ds_weight_enc2_pha,ssm_delta_bias,ssm_delta_bias.bin,pvss_ds_weight_enc2_pha/ssm_delta_bias.bin,float32,32,32,layers_encoder_phase.2.blocks.0.ss2d.dt_projs_bias,
+pvss_ds_weight_enc2_pha,ssm_out_norm_w,ssm_out_norm_w.bin,pvss_ds_weight_enc2_pha/ssm_out_norm_w.bin,float32,8,8,layers_encoder_phase.2.blocks.0.ss2d.out_norm.weight,
+pvss_ds_weight_enc2_pha,ssm_out_norm_b,ssm_out_norm_b.bin,pvss_ds_weight_enc2_pha/ssm_out_norm_b.bin,float32,8,8,layers_encoder_phase.2.blocks.0.ss2d.out_norm.bias,
+pvss_ds_weight_enc2_pha,ssm_out_projection_w,ssm_out_projection_w.bin,pvss_ds_weight_enc2_pha/ssm_out_projection_w.bin,int8,32,4x8,layers_encoder_phase.2.blocks.0.ss2d.out_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc2_pha,ssm_out_projection_w_quant_scale,ssm_out_projection_w_quant_scale.bin,pvss_ds_weight_enc2_pha/ssm_out_projection_w_quant_scale.bin,float32,8,8,layers_encoder_phase.2.blocks.0.ss2d.out_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc2_pha,ssm_out_projection_w_dequant_scale,ssm_out_projection_w_dequant_scale.bin,pvss_ds_weight_enc2_pha/ssm_out_projection_w_dequant_scale.bin,float32,4,4,layers_encoder_phase.2.blocks.0.ss2d.out_proj.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc2_pha,mlp_norm_w,mlp_norm_w.bin,pvss_ds_weight_enc2_pha/mlp_norm_w.bin,float32,64,64,layers_encoder_phase.2.blocks.0.norm2.weight,
+pvss_ds_weight_enc2_pha,mlp_norm_b,mlp_norm_b.bin,pvss_ds_weight_enc2_pha/mlp_norm_b.bin,float32,64,64,layers_encoder_phase.2.blocks.0.norm2.bias,
+pvss_ds_weight_enc2_pha,mlp_fc1_w,mlp_fc1_w.bin,pvss_ds_weight_enc2_pha/mlp_fc1_w.bin,int8,4096,64x64,layers_encoder_phase.2.blocks.0.mlp.fc1.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc2_pha,mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,pvss_ds_weight_enc2_pha/mlp_fc1_w_quant_scale.bin,float32,64,64,layers_encoder_phase.2.blocks.0.mlp.fc1.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc2_pha,mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,pvss_ds_weight_enc2_pha/mlp_fc1_w_dequant_scale.bin,float32,64,64,layers_encoder_phase.2.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc2_pha,mlp_fc1_b_i32,mlp_fc1_b_i32.bin,pvss_ds_weight_enc2_pha/mlp_fc1_b_i32.bin,int32,64,64,layers_encoder_phase.2.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+pvss_ds_weight_enc2_pha,mlp_fc2_w,mlp_fc2_w.bin,pvss_ds_weight_enc2_pha/mlp_fc2_w.bin,int8,8192,128x64,layers_encoder_phase.2.blocks.0.mlp.fc2.mlp_dim_redu.weight_int8,"act scale folded, requantized per OC"
+pvss_ds_weight_enc2_pha,mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,pvss_ds_weight_enc2_pha/mlp_fc2_w_quant_scale.bin,float32,64,64,layers_encoder_phase.2.blocks.0.mlp.fc2.mlp_dim_redu.a_scale,sq_s*a_scale*a_scale_mul
+pvss_ds_weight_enc2_pha,mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,pvss_ds_weight_enc2_pha/mlp_fc2_w_dequant_scale.bin,float32,128,128,layers_encoder_phase.2.blocks.0.mlp.fc2.mlp_dim_redu.w_scale,per-OC; int32 acc -> f32
+pvss_ds_weight_enc2_pha,mlp_fc_res_w,mlp_fc_res_w.bin,pvss_ds_weight_enc2_pha/mlp_fc_res_w.bin,float32,8192,128x64,layers_encoder_phase.2.blocks.0.skip_proj.skip_dim_redu.weight,f32 in ckpt (skip_proj excluded from PTQ)
+pvss_ds_weight_enc2_pha,mlp_fc_res_b,mlp_fc_res_b.bin,pvss_ds_weight_enc2_pha/mlp_fc_res_b.bin,float32,128,128,<generated>,zero bias placeholder
+pvss_ds_weight_enc2_pha,mlp_sumpool_w,mlp_sumpool_w.bin,pvss_ds_weight_enc2_pha/mlp_sumpool_w.bin,float32,256,64x2x2,layers_encoder_phase.2.blocks.0.mlp.fc2.mlp_sumpool.weight,
+pvss_ds_weight_enc2_pha,mlp_dim_reduce_w,mlp_dim_reduce_w.bin,pvss_ds_weight_enc2_pha/mlp_dim_reduce_w.bin,float32,1,1,<unused>,unused optional field
+pvss_ds_weight_enc2_pha,skip_reduce_w,skip_reduce_w.bin,pvss_ds_weight_enc2_pha/skip_reduce_w.bin,float32,1,1,<unused>,unused optional field
+pvss_latent_weight_mag,ssm_in_norm_w,ssm_in_norm_w.bin,pvss_latent_weight_mag/ssm_in_norm_w.bin,float32,128,128,layers_encoder_mag.3.blocks.0.norm.weight,
+pvss_latent_weight_mag,ssm_in_norm_b,ssm_in_norm_b.bin,pvss_latent_weight_mag/ssm_in_norm_b.bin,float32,128,128,layers_encoder_mag.3.blocks.0.norm.bias,
+pvss_latent_weight_mag,ssm_in_projection_w,ssm_in_projection_w.bin,pvss_latent_weight_mag/ssm_in_projection_w.bin,int8,256,32x8,layers_encoder_mag.3.blocks.0.ss2d.in_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_latent_weight_mag,ssm_in_projection_w_quant_scale,ssm_in_projection_w_quant_scale.bin,pvss_latent_weight_mag/ssm_in_projection_w_quant_scale.bin,float32,8,8,layers_encoder_mag.3.blocks.0.ss2d.in_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_latent_weight_mag,ssm_in_projection_w_dequant_scale,ssm_in_projection_w_dequant_scale.bin,pvss_latent_weight_mag/ssm_in_projection_w_dequant_scale.bin,float32,32,32,layers_encoder_mag.3.blocks.0.ss2d.in_proj.w_scale,per-OC; int32 acc -> f32
+pvss_latent_weight_mag,ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,pvss_latent_weight_mag/ssm_dw_conv2d_w.bin,int8,144,16x3x3,layers_encoder_mag.3.blocks.0.ss2d.conv2d.weight_int8,as stored (no refold)
+pvss_latent_weight_mag,ssm_dw_conv2d_w_quant_scale,ssm_dw_conv2d_w_quant_scale.bin,pvss_latent_weight_mag/ssm_dw_conv2d_w_quant_scale.bin,float32,16,16,layers_encoder_mag.3.blocks.0.ss2d.conv2d.a_scale,sq_s*a_scale*a_scale_mul
+pvss_latent_weight_mag,ssm_dw_conv2d_w_dequant_scale,ssm_dw_conv2d_w_dequant_scale.bin,pvss_latent_weight_mag/ssm_dw_conv2d_w_dequant_scale.bin,float32,16,16,layers_encoder_mag.3.blocks.0.ss2d.conv2d.w_scale,per-OC; int32 acc -> f32
+pvss_latent_weight_mag,ssm_dw_conv2d_b_i32,ssm_dw_conv2d_b_i32.bin,pvss_latent_weight_mag/ssm_dw_conv2d_b_i32.bin,int32,16,16,layers_encoder_mag.3.blocks.0.ss2d.conv2d.bias,round(bias_f32 / dequant_scale)
+pvss_latent_weight_mag,ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,pvss_latent_weight_mag/ssm_dw_conv1d_w.bin,float32,192,12x16,layers_encoder_mag.3.blocks.0.ss2d.x_proj_conv.weight,
+pvss_latent_weight_mag,ssm_dt_projection_w,ssm_dt_projection_w.bin,pvss_latent_weight_mag/ssm_dt_projection_w.bin,float32,64,64x1,layers_encoder_mag.3.blocks.0.ss2d.dt_proj_conv.weight,
+pvss_latent_weight_mag,ssm_A,ssm_A.bin,pvss_latent_weight_mag/ssm_A.bin,float32,64,64x1,layers_encoder_mag.3.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+pvss_latent_weight_mag,ssm_Ds,ssm_Ds.bin,pvss_latent_weight_mag/ssm_Ds.bin,float32,64,64,layers_encoder_mag.3.blocks.0.ss2d.Ds,
+pvss_latent_weight_mag,ssm_delta_bias,ssm_delta_bias.bin,pvss_latent_weight_mag/ssm_delta_bias.bin,float32,64,64,layers_encoder_mag.3.blocks.0.ss2d.dt_projs_bias,
+pvss_latent_weight_mag,ssm_out_norm_w,ssm_out_norm_w.bin,pvss_latent_weight_mag/ssm_out_norm_w.bin,float32,16,16,layers_encoder_mag.3.blocks.0.ss2d.out_norm.weight,
+pvss_latent_weight_mag,ssm_out_norm_b,ssm_out_norm_b.bin,pvss_latent_weight_mag/ssm_out_norm_b.bin,float32,16,16,layers_encoder_mag.3.blocks.0.ss2d.out_norm.bias,
+pvss_latent_weight_mag,ssm_out_projection_w,ssm_out_projection_w.bin,pvss_latent_weight_mag/ssm_out_projection_w.bin,int8,128,8x16,layers_encoder_mag.3.blocks.0.ss2d.out_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_latent_weight_mag,ssm_out_projection_w_quant_scale,ssm_out_projection_w_quant_scale.bin,pvss_latent_weight_mag/ssm_out_projection_w_quant_scale.bin,float32,16,16,layers_encoder_mag.3.blocks.0.ss2d.out_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_latent_weight_mag,ssm_out_projection_w_dequant_scale,ssm_out_projection_w_dequant_scale.bin,pvss_latent_weight_mag/ssm_out_projection_w_dequant_scale.bin,float32,8,8,layers_encoder_mag.3.blocks.0.ss2d.out_proj.w_scale,per-OC; int32 acc -> f32
+pvss_latent_weight_mag,mlp_norm_w,mlp_norm_w.bin,pvss_latent_weight_mag/mlp_norm_w.bin,float32,128,128,layers_encoder_mag.3.blocks.0.norm2.weight,
+pvss_latent_weight_mag,mlp_norm_b,mlp_norm_b.bin,pvss_latent_weight_mag/mlp_norm_b.bin,float32,128,128,layers_encoder_mag.3.blocks.0.norm2.bias,
+pvss_latent_weight_mag,mlp_fc1_w,mlp_fc1_w.bin,pvss_latent_weight_mag/mlp_fc1_w.bin,int8,16384,128x128,layers_encoder_mag.3.blocks.0.mlp.fc1.weight_int8,"act scale folded, requantized per OC"
+pvss_latent_weight_mag,mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,pvss_latent_weight_mag/mlp_fc1_w_quant_scale.bin,float32,128,128,layers_encoder_mag.3.blocks.0.mlp.fc1.a_scale,sq_s*a_scale*a_scale_mul
+pvss_latent_weight_mag,mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,pvss_latent_weight_mag/mlp_fc1_w_dequant_scale.bin,float32,128,128,layers_encoder_mag.3.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+pvss_latent_weight_mag,mlp_fc1_b_i32,mlp_fc1_b_i32.bin,pvss_latent_weight_mag/mlp_fc1_b_i32.bin,int32,128,128,layers_encoder_mag.3.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+pvss_latent_weight_mag,mlp_fc2_w,mlp_fc2_w.bin,pvss_latent_weight_mag/mlp_fc2_w.bin,int8,16384,128x128,layers_encoder_mag.3.blocks.0.mlp.fc2.weight_int8,"act scale folded, requantized per OC"
+pvss_latent_weight_mag,mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,pvss_latent_weight_mag/mlp_fc2_w_quant_scale.bin,float32,128,128,layers_encoder_mag.3.blocks.0.mlp.fc2.a_scale,sq_s*a_scale*a_scale_mul
+pvss_latent_weight_mag,mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,pvss_latent_weight_mag/mlp_fc2_w_dequant_scale.bin,float32,128,128,layers_encoder_mag.3.blocks.0.mlp.fc2.w_scale,per-OC; int32 acc -> f32
+pvss_latent_weight_mag,mlp_fc2_b_i32,mlp_fc2_b_i32.bin,pvss_latent_weight_mag/mlp_fc2_b_i32.bin,int32,128,128,layers_encoder_mag.3.blocks.0.mlp.fc2.bias,round(bias_f32 / dequant_scale)
+pvss_latent_weight_pha,ssm_in_norm_w,ssm_in_norm_w.bin,pvss_latent_weight_pha/ssm_in_norm_w.bin,float32,128,128,layers_encoder_phase.3.blocks.0.norm.weight,
+pvss_latent_weight_pha,ssm_in_norm_b,ssm_in_norm_b.bin,pvss_latent_weight_pha/ssm_in_norm_b.bin,float32,128,128,layers_encoder_phase.3.blocks.0.norm.bias,
+pvss_latent_weight_pha,ssm_in_projection_w,ssm_in_projection_w.bin,pvss_latent_weight_pha/ssm_in_projection_w.bin,int8,256,32x8,layers_encoder_phase.3.blocks.0.ss2d.in_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_latent_weight_pha,ssm_in_projection_w_quant_scale,ssm_in_projection_w_quant_scale.bin,pvss_latent_weight_pha/ssm_in_projection_w_quant_scale.bin,float32,8,8,layers_encoder_phase.3.blocks.0.ss2d.in_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_latent_weight_pha,ssm_in_projection_w_dequant_scale,ssm_in_projection_w_dequant_scale.bin,pvss_latent_weight_pha/ssm_in_projection_w_dequant_scale.bin,float32,32,32,layers_encoder_phase.3.blocks.0.ss2d.in_proj.w_scale,per-OC; int32 acc -> f32
+pvss_latent_weight_pha,ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,pvss_latent_weight_pha/ssm_dw_conv2d_w.bin,int8,144,16x3x3,layers_encoder_phase.3.blocks.0.ss2d.conv2d.weight_int8,as stored (no refold)
+pvss_latent_weight_pha,ssm_dw_conv2d_w_quant_scale,ssm_dw_conv2d_w_quant_scale.bin,pvss_latent_weight_pha/ssm_dw_conv2d_w_quant_scale.bin,float32,16,16,layers_encoder_phase.3.blocks.0.ss2d.conv2d.a_scale,sq_s*a_scale*a_scale_mul
+pvss_latent_weight_pha,ssm_dw_conv2d_w_dequant_scale,ssm_dw_conv2d_w_dequant_scale.bin,pvss_latent_weight_pha/ssm_dw_conv2d_w_dequant_scale.bin,float32,16,16,layers_encoder_phase.3.blocks.0.ss2d.conv2d.w_scale,per-OC; int32 acc -> f32
+pvss_latent_weight_pha,ssm_dw_conv2d_b_i32,ssm_dw_conv2d_b_i32.bin,pvss_latent_weight_pha/ssm_dw_conv2d_b_i32.bin,int32,16,16,layers_encoder_phase.3.blocks.0.ss2d.conv2d.bias,round(bias_f32 / dequant_scale)
+pvss_latent_weight_pha,ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,pvss_latent_weight_pha/ssm_dw_conv1d_w.bin,float32,192,12x16,layers_encoder_phase.3.blocks.0.ss2d.x_proj_conv.weight,
+pvss_latent_weight_pha,ssm_dt_projection_w,ssm_dt_projection_w.bin,pvss_latent_weight_pha/ssm_dt_projection_w.bin,float32,64,64x1,layers_encoder_phase.3.blocks.0.ss2d.dt_proj_conv.weight,
+pvss_latent_weight_pha,ssm_A,ssm_A.bin,pvss_latent_weight_pha/ssm_A.bin,float32,64,64x1,layers_encoder_phase.3.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+pvss_latent_weight_pha,ssm_Ds,ssm_Ds.bin,pvss_latent_weight_pha/ssm_Ds.bin,float32,64,64,layers_encoder_phase.3.blocks.0.ss2d.Ds,
+pvss_latent_weight_pha,ssm_delta_bias,ssm_delta_bias.bin,pvss_latent_weight_pha/ssm_delta_bias.bin,float32,64,64,layers_encoder_phase.3.blocks.0.ss2d.dt_projs_bias,
+pvss_latent_weight_pha,ssm_out_norm_w,ssm_out_norm_w.bin,pvss_latent_weight_pha/ssm_out_norm_w.bin,float32,16,16,layers_encoder_phase.3.blocks.0.ss2d.out_norm.weight,
+pvss_latent_weight_pha,ssm_out_norm_b,ssm_out_norm_b.bin,pvss_latent_weight_pha/ssm_out_norm_b.bin,float32,16,16,layers_encoder_phase.3.blocks.0.ss2d.out_norm.bias,
+pvss_latent_weight_pha,ssm_out_projection_w,ssm_out_projection_w.bin,pvss_latent_weight_pha/ssm_out_projection_w.bin,int8,128,8x16,layers_encoder_phase.3.blocks.0.ss2d.out_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_latent_weight_pha,ssm_out_projection_w_quant_scale,ssm_out_projection_w_quant_scale.bin,pvss_latent_weight_pha/ssm_out_projection_w_quant_scale.bin,float32,16,16,layers_encoder_phase.3.blocks.0.ss2d.out_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_latent_weight_pha,ssm_out_projection_w_dequant_scale,ssm_out_projection_w_dequant_scale.bin,pvss_latent_weight_pha/ssm_out_projection_w_dequant_scale.bin,float32,8,8,layers_encoder_phase.3.blocks.0.ss2d.out_proj.w_scale,per-OC; int32 acc -> f32
+pvss_latent_weight_pha,mlp_norm_w,mlp_norm_w.bin,pvss_latent_weight_pha/mlp_norm_w.bin,float32,128,128,layers_encoder_phase.3.blocks.0.norm2.weight,
+pvss_latent_weight_pha,mlp_norm_b,mlp_norm_b.bin,pvss_latent_weight_pha/mlp_norm_b.bin,float32,128,128,layers_encoder_phase.3.blocks.0.norm2.bias,
+pvss_latent_weight_pha,mlp_fc1_w,mlp_fc1_w.bin,pvss_latent_weight_pha/mlp_fc1_w.bin,int8,16384,128x128,layers_encoder_phase.3.blocks.0.mlp.fc1.weight_int8,"act scale folded, requantized per OC"
+pvss_latent_weight_pha,mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,pvss_latent_weight_pha/mlp_fc1_w_quant_scale.bin,float32,128,128,layers_encoder_phase.3.blocks.0.mlp.fc1.a_scale,sq_s*a_scale*a_scale_mul
+pvss_latent_weight_pha,mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,pvss_latent_weight_pha/mlp_fc1_w_dequant_scale.bin,float32,128,128,layers_encoder_phase.3.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+pvss_latent_weight_pha,mlp_fc1_b_i32,mlp_fc1_b_i32.bin,pvss_latent_weight_pha/mlp_fc1_b_i32.bin,int32,128,128,layers_encoder_phase.3.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+pvss_latent_weight_pha,mlp_fc2_w,mlp_fc2_w.bin,pvss_latent_weight_pha/mlp_fc2_w.bin,int8,16384,128x128,layers_encoder_phase.3.blocks.0.mlp.fc2.weight_int8,"act scale folded, requantized per OC"
+pvss_latent_weight_pha,mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,pvss_latent_weight_pha/mlp_fc2_w_quant_scale.bin,float32,128,128,layers_encoder_phase.3.blocks.0.mlp.fc2.a_scale,sq_s*a_scale*a_scale_mul
+pvss_latent_weight_pha,mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,pvss_latent_weight_pha/mlp_fc2_w_dequant_scale.bin,float32,128,128,layers_encoder_phase.3.blocks.0.mlp.fc2.w_scale,per-OC; int32 acc -> f32
+pvss_latent_weight_pha,mlp_fc2_b_i32,mlp_fc2_b_i32.bin,pvss_latent_weight_pha/mlp_fc2_b_i32.bin,int32,128,128,layers_encoder_phase.3.blocks.0.mlp.fc2.bias,round(bias_f32 / dequant_scale)
+pvss_us_skip_weight_mag,skip_conv_dec0_w,skip_conv_dec0_w.bin,pvss_us_skip_weight_mag/skip_conv_dec0_w.bin,int8,32768,128x256,layers_decoder_mag.1.skip_handler.weight_int8,"act scale folded, requantized per OC"
+pvss_us_skip_weight_mag,skip_conv_dec0_w_quant_scale,skip_conv_dec0_w_quant_scale.bin,pvss_us_skip_weight_mag/skip_conv_dec0_w_quant_scale.bin,float32,256,256,layers_decoder_mag.1.skip_handler.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_skip_weight_mag,skip_conv_dec0_w_dequant_scale,skip_conv_dec0_w_dequant_scale.bin,pvss_us_skip_weight_mag/skip_conv_dec0_w_dequant_scale.bin,float32,128,128,layers_decoder_mag.1.skip_handler.w_scale,per-OC; int32 acc -> f32
+pvss_us_skip_weight_mag,skip_conv_dec0_b_i32,skip_conv_dec0_b_i32.bin,pvss_us_skip_weight_mag/skip_conv_dec0_b_i32.bin,int32,128,128,layers_decoder_mag.1.skip_handler.bias,round(bias_f32 / dequant_scale)
+pvss_us_skip_weight_mag,skip_conv_dec1_w,skip_conv_dec1_w.bin,pvss_us_skip_weight_mag/skip_conv_dec1_w.bin,int8,8192,64x128,layers_decoder_mag.2.skip_handler.weight_int8,"act scale folded, requantized per OC"
+pvss_us_skip_weight_mag,skip_conv_dec1_w_quant_scale,skip_conv_dec1_w_quant_scale.bin,pvss_us_skip_weight_mag/skip_conv_dec1_w_quant_scale.bin,float32,128,128,layers_decoder_mag.2.skip_handler.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_skip_weight_mag,skip_conv_dec1_w_dequant_scale,skip_conv_dec1_w_dequant_scale.bin,pvss_us_skip_weight_mag/skip_conv_dec1_w_dequant_scale.bin,float32,64,64,layers_decoder_mag.2.skip_handler.w_scale,per-OC; int32 acc -> f32
+pvss_us_skip_weight_mag,skip_conv_dec1_b_i32,skip_conv_dec1_b_i32.bin,pvss_us_skip_weight_mag/skip_conv_dec1_b_i32.bin,int32,64,64,layers_decoder_mag.2.skip_handler.bias,round(bias_f32 / dequant_scale)
+pvss_us_skip_weight_mag,skip_conv_dec2_w,skip_conv_dec2_w.bin,pvss_us_skip_weight_mag/skip_conv_dec2_w.bin,int8,2048,32x64,layers_decoder_mag.3.skip_handler.weight_int8,"act scale folded, requantized per OC"
+pvss_us_skip_weight_mag,skip_conv_dec2_w_quant_scale,skip_conv_dec2_w_quant_scale.bin,pvss_us_skip_weight_mag/skip_conv_dec2_w_quant_scale.bin,float32,64,64,layers_decoder_mag.3.skip_handler.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_skip_weight_mag,skip_conv_dec2_w_dequant_scale,skip_conv_dec2_w_dequant_scale.bin,pvss_us_skip_weight_mag/skip_conv_dec2_w_dequant_scale.bin,float32,32,32,layers_decoder_mag.3.skip_handler.w_scale,per-OC; int32 acc -> f32
+pvss_us_skip_weight_mag,skip_conv_dec2_b_i32,skip_conv_dec2_b_i32.bin,pvss_us_skip_weight_mag/skip_conv_dec2_b_i32.bin,int32,32,32,layers_decoder_mag.3.skip_handler.bias,round(bias_f32 / dequant_scale)
+pvss_us_skip_weight_mag,skip_conv_out0_w,skip_conv_out0_w.bin,pvss_us_skip_weight_mag/skip_conv_out0_w.bin,int8,512,16x32,output_layer_mag.0.skip_handler.weight_int8,"act scale folded, requantized per OC"
+pvss_us_skip_weight_mag,skip_conv_out0_w_quant_scale,skip_conv_out0_w_quant_scale.bin,pvss_us_skip_weight_mag/skip_conv_out0_w_quant_scale.bin,float32,32,32,output_layer_mag.0.skip_handler.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_skip_weight_mag,skip_conv_out0_w_dequant_scale,skip_conv_out0_w_dequant_scale.bin,pvss_us_skip_weight_mag/skip_conv_out0_w_dequant_scale.bin,float32,16,16,output_layer_mag.0.skip_handler.w_scale,per-OC; int32 acc -> f32
+pvss_us_skip_weight_mag,skip_conv_out0_b_i32,skip_conv_out0_b_i32.bin,pvss_us_skip_weight_mag/skip_conv_out0_b_i32.bin,int32,16,16,output_layer_mag.0.skip_handler.bias,round(bias_f32 / dequant_scale)
+pvss_us_skip_weight_pha,skip_conv_dec0_w,skip_conv_dec0_w.bin,pvss_us_skip_weight_pha/skip_conv_dec0_w.bin,int8,32768,128x256,layers_decoder_phase.1.skip_handler.weight_int8,"act scale folded, requantized per OC"
+pvss_us_skip_weight_pha,skip_conv_dec0_w_quant_scale,skip_conv_dec0_w_quant_scale.bin,pvss_us_skip_weight_pha/skip_conv_dec0_w_quant_scale.bin,float32,256,256,layers_decoder_phase.1.skip_handler.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_skip_weight_pha,skip_conv_dec0_w_dequant_scale,skip_conv_dec0_w_dequant_scale.bin,pvss_us_skip_weight_pha/skip_conv_dec0_w_dequant_scale.bin,float32,128,128,layers_decoder_phase.1.skip_handler.w_scale,per-OC; int32 acc -> f32
+pvss_us_skip_weight_pha,skip_conv_dec0_b_i32,skip_conv_dec0_b_i32.bin,pvss_us_skip_weight_pha/skip_conv_dec0_b_i32.bin,int32,128,128,layers_decoder_phase.1.skip_handler.bias,round(bias_f32 / dequant_scale)
+pvss_us_skip_weight_pha,skip_conv_dec1_w,skip_conv_dec1_w.bin,pvss_us_skip_weight_pha/skip_conv_dec1_w.bin,int8,8192,64x128,layers_decoder_phase.2.skip_handler.weight_int8,"act scale folded, requantized per OC"
+pvss_us_skip_weight_pha,skip_conv_dec1_w_quant_scale,skip_conv_dec1_w_quant_scale.bin,pvss_us_skip_weight_pha/skip_conv_dec1_w_quant_scale.bin,float32,128,128,layers_decoder_phase.2.skip_handler.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_skip_weight_pha,skip_conv_dec1_w_dequant_scale,skip_conv_dec1_w_dequant_scale.bin,pvss_us_skip_weight_pha/skip_conv_dec1_w_dequant_scale.bin,float32,64,64,layers_decoder_phase.2.skip_handler.w_scale,per-OC; int32 acc -> f32
+pvss_us_skip_weight_pha,skip_conv_dec1_b_i32,skip_conv_dec1_b_i32.bin,pvss_us_skip_weight_pha/skip_conv_dec1_b_i32.bin,int32,64,64,layers_decoder_phase.2.skip_handler.bias,round(bias_f32 / dequant_scale)
+pvss_us_skip_weight_pha,skip_conv_dec2_w,skip_conv_dec2_w.bin,pvss_us_skip_weight_pha/skip_conv_dec2_w.bin,int8,2048,32x64,layers_decoder_phase.3.skip_handler.weight_int8,"act scale folded, requantized per OC"
+pvss_us_skip_weight_pha,skip_conv_dec2_w_quant_scale,skip_conv_dec2_w_quant_scale.bin,pvss_us_skip_weight_pha/skip_conv_dec2_w_quant_scale.bin,float32,64,64,layers_decoder_phase.3.skip_handler.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_skip_weight_pha,skip_conv_dec2_w_dequant_scale,skip_conv_dec2_w_dequant_scale.bin,pvss_us_skip_weight_pha/skip_conv_dec2_w_dequant_scale.bin,float32,32,32,layers_decoder_phase.3.skip_handler.w_scale,per-OC; int32 acc -> f32
+pvss_us_skip_weight_pha,skip_conv_dec2_b_i32,skip_conv_dec2_b_i32.bin,pvss_us_skip_weight_pha/skip_conv_dec2_b_i32.bin,int32,32,32,layers_decoder_phase.3.skip_handler.bias,round(bias_f32 / dequant_scale)
+pvss_us_skip_weight_pha,skip_conv_out0_w,skip_conv_out0_w.bin,pvss_us_skip_weight_pha/skip_conv_out0_w.bin,int8,512,16x32,output_layer_phase.0.skip_handler.weight_int8,"act scale folded, requantized per OC"
+pvss_us_skip_weight_pha,skip_conv_out0_w_quant_scale,skip_conv_out0_w_quant_scale.bin,pvss_us_skip_weight_pha/skip_conv_out0_w_quant_scale.bin,float32,32,32,output_layer_phase.0.skip_handler.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_skip_weight_pha,skip_conv_out0_w_dequant_scale,skip_conv_out0_w_dequant_scale.bin,pvss_us_skip_weight_pha/skip_conv_out0_w_dequant_scale.bin,float32,16,16,output_layer_phase.0.skip_handler.w_scale,per-OC; int32 acc -> f32
+pvss_us_skip_weight_pha,skip_conv_out0_b_i32,skip_conv_out0_b_i32.bin,pvss_us_skip_weight_pha/skip_conv_out0_b_i32.bin,int32,16,16,output_layer_phase.0.skip_handler.bias,round(bias_f32 / dequant_scale)
+pvss_us_weight_dec0_mag,ssm_in_norm_w,ssm_in_norm_w.bin,pvss_us_weight_dec0_mag/ssm_in_norm_w.bin,float32,128,128,layers_decoder_mag.1.blocks.0.norm.weight,
+pvss_us_weight_dec0_mag,ssm_in_norm_b,ssm_in_norm_b.bin,pvss_us_weight_dec0_mag/ssm_in_norm_b.bin,float32,128,128,layers_decoder_mag.1.blocks.0.norm.bias,
+pvss_us_weight_dec0_mag,ssm_in_projection_w,ssm_in_projection_w.bin,pvss_us_weight_dec0_mag/ssm_in_projection_w.bin,int8,1024,64x16,layers_decoder_mag.1.blocks.0.ss2d.in_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec0_mag,ssm_in_projection_w_quant_scale,ssm_in_projection_w_quant_scale.bin,pvss_us_weight_dec0_mag/ssm_in_projection_w_quant_scale.bin,float32,16,16,layers_decoder_mag.1.blocks.0.ss2d.in_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec0_mag,ssm_in_projection_w_dequant_scale,ssm_in_projection_w_dequant_scale.bin,pvss_us_weight_dec0_mag/ssm_in_projection_w_dequant_scale.bin,float32,64,64,layers_decoder_mag.1.blocks.0.ss2d.in_proj.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec0_mag,ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,pvss_us_weight_dec0_mag/ssm_dw_conv2d_w.bin,int8,288,32x3x3,layers_decoder_mag.1.blocks.0.ss2d.conv2d.weight_int8,as stored (no refold)
+pvss_us_weight_dec0_mag,ssm_dw_conv2d_w_quant_scale,ssm_dw_conv2d_w_quant_scale.bin,pvss_us_weight_dec0_mag/ssm_dw_conv2d_w_quant_scale.bin,float32,32,32,layers_decoder_mag.1.blocks.0.ss2d.conv2d.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec0_mag,ssm_dw_conv2d_w_dequant_scale,ssm_dw_conv2d_w_dequant_scale.bin,pvss_us_weight_dec0_mag/ssm_dw_conv2d_w_dequant_scale.bin,float32,32,32,layers_decoder_mag.1.blocks.0.ss2d.conv2d.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec0_mag,ssm_dw_conv2d_b_i32,ssm_dw_conv2d_b_i32.bin,pvss_us_weight_dec0_mag/ssm_dw_conv2d_b_i32.bin,int32,32,32,layers_decoder_mag.1.blocks.0.ss2d.conv2d.bias,round(bias_f32 / dequant_scale)
+pvss_us_weight_dec0_mag,ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,pvss_us_weight_dec0_mag/ssm_dw_conv1d_w.bin,float32,384,12x32,layers_decoder_mag.1.blocks.0.ss2d.x_proj_conv.weight,
+pvss_us_weight_dec0_mag,ssm_dt_projection_w,ssm_dt_projection_w.bin,pvss_us_weight_dec0_mag/ssm_dt_projection_w.bin,float32,128,128x1,layers_decoder_mag.1.blocks.0.ss2d.dt_proj_conv.weight,
+pvss_us_weight_dec0_mag,ssm_A,ssm_A.bin,pvss_us_weight_dec0_mag/ssm_A.bin,float32,128,128x1,layers_decoder_mag.1.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+pvss_us_weight_dec0_mag,ssm_Ds,ssm_Ds.bin,pvss_us_weight_dec0_mag/ssm_Ds.bin,float32,128,128,layers_decoder_mag.1.blocks.0.ss2d.Ds,
+pvss_us_weight_dec0_mag,ssm_delta_bias,ssm_delta_bias.bin,pvss_us_weight_dec0_mag/ssm_delta_bias.bin,float32,128,128,layers_decoder_mag.1.blocks.0.ss2d.dt_projs_bias,
+pvss_us_weight_dec0_mag,ssm_out_norm_w,ssm_out_norm_w.bin,pvss_us_weight_dec0_mag/ssm_out_norm_w.bin,float32,32,32,layers_decoder_mag.1.blocks.0.ss2d.out_norm.weight,
+pvss_us_weight_dec0_mag,ssm_out_norm_b,ssm_out_norm_b.bin,pvss_us_weight_dec0_mag/ssm_out_norm_b.bin,float32,32,32,layers_decoder_mag.1.blocks.0.ss2d.out_norm.bias,
+pvss_us_weight_dec0_mag,ssm_out_projection_w,ssm_out_projection_w.bin,pvss_us_weight_dec0_mag/ssm_out_projection_w.bin,int8,512,16x32,layers_decoder_mag.1.blocks.0.ss2d.out_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec0_mag,ssm_out_projection_w_quant_scale,ssm_out_projection_w_quant_scale.bin,pvss_us_weight_dec0_mag/ssm_out_projection_w_quant_scale.bin,float32,32,32,layers_decoder_mag.1.blocks.0.ss2d.out_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec0_mag,ssm_out_projection_w_dequant_scale,ssm_out_projection_w_dequant_scale.bin,pvss_us_weight_dec0_mag/ssm_out_projection_w_dequant_scale.bin,float32,16,16,layers_decoder_mag.1.blocks.0.ss2d.out_proj.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec0_mag,mlp_norm_w,mlp_norm_w.bin,pvss_us_weight_dec0_mag/mlp_norm_w.bin,float32,128,128,layers_decoder_mag.1.blocks.0.norm2.weight,
+pvss_us_weight_dec0_mag,mlp_norm_b,mlp_norm_b.bin,pvss_us_weight_dec0_mag/mlp_norm_b.bin,float32,128,128,layers_decoder_mag.1.blocks.0.norm2.bias,
+pvss_us_weight_dec0_mag,mlp_fc1_w,mlp_fc1_w.bin,pvss_us_weight_dec0_mag/mlp_fc1_w.bin,int8,16384,128x128,layers_decoder_mag.1.blocks.0.mlp.fc1.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec0_mag,mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,pvss_us_weight_dec0_mag/mlp_fc1_w_quant_scale.bin,float32,128,128,layers_decoder_mag.1.blocks.0.mlp.fc1.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec0_mag,mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,pvss_us_weight_dec0_mag/mlp_fc1_w_dequant_scale.bin,float32,128,128,layers_decoder_mag.1.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec0_mag,mlp_fc1_b_i32,mlp_fc1_b_i32.bin,pvss_us_weight_dec0_mag/mlp_fc1_b_i32.bin,int32,128,128,layers_decoder_mag.1.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+pvss_us_weight_dec0_mag,mlp_fc2_w,mlp_fc2_w.bin,pvss_us_weight_dec0_mag/mlp_fc2_w.bin,int8,16384,128x128,layers_decoder_mag.1.blocks.0.mlp.fc2.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec0_mag,mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,pvss_us_weight_dec0_mag/mlp_fc2_w_quant_scale.bin,float32,128,128,layers_decoder_mag.1.blocks.0.mlp.fc2.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec0_mag,mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,pvss_us_weight_dec0_mag/mlp_fc2_w_dequant_scale.bin,float32,128,128,layers_decoder_mag.1.blocks.0.mlp.fc2.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec0_mag,mlp_fc2_b_i32,mlp_fc2_b_i32.bin,pvss_us_weight_dec0_mag/mlp_fc2_b_i32.bin,int32,128,128,layers_decoder_mag.1.blocks.0.mlp.fc2.bias,round(bias_f32 / dequant_scale)
+pvss_us_weight_dec0_mag,pe_w,pe_w.bin,pvss_us_weight_dec0_mag/pe_w.bin,int8,32768,256x128,layers_decoder_mag.1.sampler.expand.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec0_mag,pe_w_quant_scale,pe_w_quant_scale.bin,pvss_us_weight_dec0_mag/pe_w_quant_scale.bin,float32,128,128,layers_decoder_mag.1.sampler.expand.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec0_mag,pe_w_dequant_scale,pe_w_dequant_scale.bin,pvss_us_weight_dec0_mag/pe_w_dequant_scale.bin,float32,256,256,layers_decoder_mag.1.sampler.expand.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec0_mag,pe_norm_w,pe_norm_w.bin,pvss_us_weight_dec0_mag/pe_norm_w.bin,float32,64,64,layers_decoder_mag.1.sampler.norm.weight,
+pvss_us_weight_dec0_mag,pe_norm_b,pe_norm_b.bin,pvss_us_weight_dec0_mag/pe_norm_b.bin,float32,64,64,layers_decoder_mag.1.sampler.norm.bias,
+pvss_us_weight_dec0_pha,ssm_in_norm_w,ssm_in_norm_w.bin,pvss_us_weight_dec0_pha/ssm_in_norm_w.bin,float32,128,128,layers_decoder_phase.1.blocks.0.norm.weight,
+pvss_us_weight_dec0_pha,ssm_in_norm_b,ssm_in_norm_b.bin,pvss_us_weight_dec0_pha/ssm_in_norm_b.bin,float32,128,128,layers_decoder_phase.1.blocks.0.norm.bias,
+pvss_us_weight_dec0_pha,ssm_in_projection_w,ssm_in_projection_w.bin,pvss_us_weight_dec0_pha/ssm_in_projection_w.bin,int8,1024,64x16,layers_decoder_phase.1.blocks.0.ss2d.in_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec0_pha,ssm_in_projection_w_quant_scale,ssm_in_projection_w_quant_scale.bin,pvss_us_weight_dec0_pha/ssm_in_projection_w_quant_scale.bin,float32,16,16,layers_decoder_phase.1.blocks.0.ss2d.in_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec0_pha,ssm_in_projection_w_dequant_scale,ssm_in_projection_w_dequant_scale.bin,pvss_us_weight_dec0_pha/ssm_in_projection_w_dequant_scale.bin,float32,64,64,layers_decoder_phase.1.blocks.0.ss2d.in_proj.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec0_pha,ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,pvss_us_weight_dec0_pha/ssm_dw_conv2d_w.bin,int8,288,32x3x3,layers_decoder_phase.1.blocks.0.ss2d.conv2d.weight_int8,as stored (no refold)
+pvss_us_weight_dec0_pha,ssm_dw_conv2d_w_quant_scale,ssm_dw_conv2d_w_quant_scale.bin,pvss_us_weight_dec0_pha/ssm_dw_conv2d_w_quant_scale.bin,float32,32,32,layers_decoder_phase.1.blocks.0.ss2d.conv2d.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec0_pha,ssm_dw_conv2d_w_dequant_scale,ssm_dw_conv2d_w_dequant_scale.bin,pvss_us_weight_dec0_pha/ssm_dw_conv2d_w_dequant_scale.bin,float32,32,32,layers_decoder_phase.1.blocks.0.ss2d.conv2d.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec0_pha,ssm_dw_conv2d_b_i32,ssm_dw_conv2d_b_i32.bin,pvss_us_weight_dec0_pha/ssm_dw_conv2d_b_i32.bin,int32,32,32,layers_decoder_phase.1.blocks.0.ss2d.conv2d.bias,round(bias_f32 / dequant_scale)
+pvss_us_weight_dec0_pha,ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,pvss_us_weight_dec0_pha/ssm_dw_conv1d_w.bin,float32,384,12x32,layers_decoder_phase.1.blocks.0.ss2d.x_proj_conv.weight,
+pvss_us_weight_dec0_pha,ssm_dt_projection_w,ssm_dt_projection_w.bin,pvss_us_weight_dec0_pha/ssm_dt_projection_w.bin,float32,128,128x1,layers_decoder_phase.1.blocks.0.ss2d.dt_proj_conv.weight,
+pvss_us_weight_dec0_pha,ssm_A,ssm_A.bin,pvss_us_weight_dec0_pha/ssm_A.bin,float32,128,128x1,layers_decoder_phase.1.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+pvss_us_weight_dec0_pha,ssm_Ds,ssm_Ds.bin,pvss_us_weight_dec0_pha/ssm_Ds.bin,float32,128,128,layers_decoder_phase.1.blocks.0.ss2d.Ds,
+pvss_us_weight_dec0_pha,ssm_delta_bias,ssm_delta_bias.bin,pvss_us_weight_dec0_pha/ssm_delta_bias.bin,float32,128,128,layers_decoder_phase.1.blocks.0.ss2d.dt_projs_bias,
+pvss_us_weight_dec0_pha,ssm_out_norm_w,ssm_out_norm_w.bin,pvss_us_weight_dec0_pha/ssm_out_norm_w.bin,float32,32,32,layers_decoder_phase.1.blocks.0.ss2d.out_norm.weight,
+pvss_us_weight_dec0_pha,ssm_out_norm_b,ssm_out_norm_b.bin,pvss_us_weight_dec0_pha/ssm_out_norm_b.bin,float32,32,32,layers_decoder_phase.1.blocks.0.ss2d.out_norm.bias,
+pvss_us_weight_dec0_pha,ssm_out_projection_w,ssm_out_projection_w.bin,pvss_us_weight_dec0_pha/ssm_out_projection_w.bin,int8,512,16x32,layers_decoder_phase.1.blocks.0.ss2d.out_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec0_pha,ssm_out_projection_w_quant_scale,ssm_out_projection_w_quant_scale.bin,pvss_us_weight_dec0_pha/ssm_out_projection_w_quant_scale.bin,float32,32,32,layers_decoder_phase.1.blocks.0.ss2d.out_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec0_pha,ssm_out_projection_w_dequant_scale,ssm_out_projection_w_dequant_scale.bin,pvss_us_weight_dec0_pha/ssm_out_projection_w_dequant_scale.bin,float32,16,16,layers_decoder_phase.1.blocks.0.ss2d.out_proj.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec0_pha,mlp_norm_w,mlp_norm_w.bin,pvss_us_weight_dec0_pha/mlp_norm_w.bin,float32,128,128,layers_decoder_phase.1.blocks.0.norm2.weight,
+pvss_us_weight_dec0_pha,mlp_norm_b,mlp_norm_b.bin,pvss_us_weight_dec0_pha/mlp_norm_b.bin,float32,128,128,layers_decoder_phase.1.blocks.0.norm2.bias,
+pvss_us_weight_dec0_pha,mlp_fc1_w,mlp_fc1_w.bin,pvss_us_weight_dec0_pha/mlp_fc1_w.bin,int8,16384,128x128,layers_decoder_phase.1.blocks.0.mlp.fc1.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec0_pha,mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,pvss_us_weight_dec0_pha/mlp_fc1_w_quant_scale.bin,float32,128,128,layers_decoder_phase.1.blocks.0.mlp.fc1.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec0_pha,mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,pvss_us_weight_dec0_pha/mlp_fc1_w_dequant_scale.bin,float32,128,128,layers_decoder_phase.1.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec0_pha,mlp_fc1_b_i32,mlp_fc1_b_i32.bin,pvss_us_weight_dec0_pha/mlp_fc1_b_i32.bin,int32,128,128,layers_decoder_phase.1.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+pvss_us_weight_dec0_pha,mlp_fc2_w,mlp_fc2_w.bin,pvss_us_weight_dec0_pha/mlp_fc2_w.bin,int8,16384,128x128,layers_decoder_phase.1.blocks.0.mlp.fc2.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec0_pha,mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,pvss_us_weight_dec0_pha/mlp_fc2_w_quant_scale.bin,float32,128,128,layers_decoder_phase.1.blocks.0.mlp.fc2.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec0_pha,mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,pvss_us_weight_dec0_pha/mlp_fc2_w_dequant_scale.bin,float32,128,128,layers_decoder_phase.1.blocks.0.mlp.fc2.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec0_pha,mlp_fc2_b_i32,mlp_fc2_b_i32.bin,pvss_us_weight_dec0_pha/mlp_fc2_b_i32.bin,int32,128,128,layers_decoder_phase.1.blocks.0.mlp.fc2.bias,round(bias_f32 / dequant_scale)
+pvss_us_weight_dec0_pha,pe_w,pe_w.bin,pvss_us_weight_dec0_pha/pe_w.bin,int8,32768,256x128,layers_decoder_phase.1.sampler.expand.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec0_pha,pe_w_quant_scale,pe_w_quant_scale.bin,pvss_us_weight_dec0_pha/pe_w_quant_scale.bin,float32,128,128,layers_decoder_phase.1.sampler.expand.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec0_pha,pe_w_dequant_scale,pe_w_dequant_scale.bin,pvss_us_weight_dec0_pha/pe_w_dequant_scale.bin,float32,256,256,layers_decoder_phase.1.sampler.expand.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec0_pha,pe_norm_w,pe_norm_w.bin,pvss_us_weight_dec0_pha/pe_norm_w.bin,float32,64,64,layers_decoder_phase.1.sampler.norm.weight,
+pvss_us_weight_dec0_pha,pe_norm_b,pe_norm_b.bin,pvss_us_weight_dec0_pha/pe_norm_b.bin,float32,64,64,layers_decoder_phase.1.sampler.norm.bias,
+pvss_us_weight_dec1_mag,ssm_in_norm_w,ssm_in_norm_w.bin,pvss_us_weight_dec1_mag/ssm_in_norm_w.bin,float32,64,64,layers_decoder_mag.2.blocks.0.norm.weight,
+pvss_us_weight_dec1_mag,ssm_in_norm_b,ssm_in_norm_b.bin,pvss_us_weight_dec1_mag/ssm_in_norm_b.bin,float32,64,64,layers_decoder_mag.2.blocks.0.norm.bias,
+pvss_us_weight_dec1_mag,ssm_in_projection_w,ssm_in_projection_w.bin,pvss_us_weight_dec1_mag/ssm_in_projection_w.bin,int8,256,32x8,layers_decoder_mag.2.blocks.0.ss2d.in_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec1_mag,ssm_in_projection_w_quant_scale,ssm_in_projection_w_quant_scale.bin,pvss_us_weight_dec1_mag/ssm_in_projection_w_quant_scale.bin,float32,8,8,layers_decoder_mag.2.blocks.0.ss2d.in_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec1_mag,ssm_in_projection_w_dequant_scale,ssm_in_projection_w_dequant_scale.bin,pvss_us_weight_dec1_mag/ssm_in_projection_w_dequant_scale.bin,float32,32,32,layers_decoder_mag.2.blocks.0.ss2d.in_proj.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec1_mag,ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,pvss_us_weight_dec1_mag/ssm_dw_conv2d_w.bin,int8,144,16x3x3,layers_decoder_mag.2.blocks.0.ss2d.conv2d.weight_int8,as stored (no refold)
+pvss_us_weight_dec1_mag,ssm_dw_conv2d_w_quant_scale,ssm_dw_conv2d_w_quant_scale.bin,pvss_us_weight_dec1_mag/ssm_dw_conv2d_w_quant_scale.bin,float32,16,16,layers_decoder_mag.2.blocks.0.ss2d.conv2d.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec1_mag,ssm_dw_conv2d_w_dequant_scale,ssm_dw_conv2d_w_dequant_scale.bin,pvss_us_weight_dec1_mag/ssm_dw_conv2d_w_dequant_scale.bin,float32,16,16,layers_decoder_mag.2.blocks.0.ss2d.conv2d.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec1_mag,ssm_dw_conv2d_b_i32,ssm_dw_conv2d_b_i32.bin,pvss_us_weight_dec1_mag/ssm_dw_conv2d_b_i32.bin,int32,16,16,layers_decoder_mag.2.blocks.0.ss2d.conv2d.bias,round(bias_f32 / dequant_scale)
+pvss_us_weight_dec1_mag,ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,pvss_us_weight_dec1_mag/ssm_dw_conv1d_w.bin,float32,192,12x16,layers_decoder_mag.2.blocks.0.ss2d.x_proj_conv.weight,
+pvss_us_weight_dec1_mag,ssm_dt_projection_w,ssm_dt_projection_w.bin,pvss_us_weight_dec1_mag/ssm_dt_projection_w.bin,float32,64,64x1,layers_decoder_mag.2.blocks.0.ss2d.dt_proj_conv.weight,
+pvss_us_weight_dec1_mag,ssm_A,ssm_A.bin,pvss_us_weight_dec1_mag/ssm_A.bin,float32,64,64x1,layers_decoder_mag.2.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+pvss_us_weight_dec1_mag,ssm_Ds,ssm_Ds.bin,pvss_us_weight_dec1_mag/ssm_Ds.bin,float32,64,64,layers_decoder_mag.2.blocks.0.ss2d.Ds,
+pvss_us_weight_dec1_mag,ssm_delta_bias,ssm_delta_bias.bin,pvss_us_weight_dec1_mag/ssm_delta_bias.bin,float32,64,64,layers_decoder_mag.2.blocks.0.ss2d.dt_projs_bias,
+pvss_us_weight_dec1_mag,ssm_out_norm_w,ssm_out_norm_w.bin,pvss_us_weight_dec1_mag/ssm_out_norm_w.bin,float32,16,16,layers_decoder_mag.2.blocks.0.ss2d.out_norm.weight,
+pvss_us_weight_dec1_mag,ssm_out_norm_b,ssm_out_norm_b.bin,pvss_us_weight_dec1_mag/ssm_out_norm_b.bin,float32,16,16,layers_decoder_mag.2.blocks.0.ss2d.out_norm.bias,
+pvss_us_weight_dec1_mag,ssm_out_projection_w,ssm_out_projection_w.bin,pvss_us_weight_dec1_mag/ssm_out_projection_w.bin,int8,128,8x16,layers_decoder_mag.2.blocks.0.ss2d.out_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec1_mag,ssm_out_projection_w_quant_scale,ssm_out_projection_w_quant_scale.bin,pvss_us_weight_dec1_mag/ssm_out_projection_w_quant_scale.bin,float32,16,16,layers_decoder_mag.2.blocks.0.ss2d.out_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec1_mag,ssm_out_projection_w_dequant_scale,ssm_out_projection_w_dequant_scale.bin,pvss_us_weight_dec1_mag/ssm_out_projection_w_dequant_scale.bin,float32,8,8,layers_decoder_mag.2.blocks.0.ss2d.out_proj.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec1_mag,mlp_norm_w,mlp_norm_w.bin,pvss_us_weight_dec1_mag/mlp_norm_w.bin,float32,64,64,layers_decoder_mag.2.blocks.0.norm2.weight,
+pvss_us_weight_dec1_mag,mlp_norm_b,mlp_norm_b.bin,pvss_us_weight_dec1_mag/mlp_norm_b.bin,float32,64,64,layers_decoder_mag.2.blocks.0.norm2.bias,
+pvss_us_weight_dec1_mag,mlp_fc1_w,mlp_fc1_w.bin,pvss_us_weight_dec1_mag/mlp_fc1_w.bin,int8,4096,64x64,layers_decoder_mag.2.blocks.0.mlp.fc1.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec1_mag,mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,pvss_us_weight_dec1_mag/mlp_fc1_w_quant_scale.bin,float32,64,64,layers_decoder_mag.2.blocks.0.mlp.fc1.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec1_mag,mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,pvss_us_weight_dec1_mag/mlp_fc1_w_dequant_scale.bin,float32,64,64,layers_decoder_mag.2.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec1_mag,mlp_fc1_b_i32,mlp_fc1_b_i32.bin,pvss_us_weight_dec1_mag/mlp_fc1_b_i32.bin,int32,64,64,layers_decoder_mag.2.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+pvss_us_weight_dec1_mag,mlp_fc2_w,mlp_fc2_w.bin,pvss_us_weight_dec1_mag/mlp_fc2_w.bin,int8,4096,64x64,layers_decoder_mag.2.blocks.0.mlp.fc2.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec1_mag,mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,pvss_us_weight_dec1_mag/mlp_fc2_w_quant_scale.bin,float32,64,64,layers_decoder_mag.2.blocks.0.mlp.fc2.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec1_mag,mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,pvss_us_weight_dec1_mag/mlp_fc2_w_dequant_scale.bin,float32,64,64,layers_decoder_mag.2.blocks.0.mlp.fc2.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec1_mag,mlp_fc2_b_i32,mlp_fc2_b_i32.bin,pvss_us_weight_dec1_mag/mlp_fc2_b_i32.bin,int32,64,64,layers_decoder_mag.2.blocks.0.mlp.fc2.bias,round(bias_f32 / dequant_scale)
+pvss_us_weight_dec1_mag,pe_w,pe_w.bin,pvss_us_weight_dec1_mag/pe_w.bin,int8,8192,128x64,layers_decoder_mag.2.sampler.expand.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec1_mag,pe_w_quant_scale,pe_w_quant_scale.bin,pvss_us_weight_dec1_mag/pe_w_quant_scale.bin,float32,64,64,layers_decoder_mag.2.sampler.expand.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec1_mag,pe_w_dequant_scale,pe_w_dequant_scale.bin,pvss_us_weight_dec1_mag/pe_w_dequant_scale.bin,float32,128,128,layers_decoder_mag.2.sampler.expand.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec1_mag,pe_norm_w,pe_norm_w.bin,pvss_us_weight_dec1_mag/pe_norm_w.bin,float32,32,32,layers_decoder_mag.2.sampler.norm.weight,
+pvss_us_weight_dec1_mag,pe_norm_b,pe_norm_b.bin,pvss_us_weight_dec1_mag/pe_norm_b.bin,float32,32,32,layers_decoder_mag.2.sampler.norm.bias,
+pvss_us_weight_dec1_pha,ssm_in_norm_w,ssm_in_norm_w.bin,pvss_us_weight_dec1_pha/ssm_in_norm_w.bin,float32,64,64,layers_decoder_phase.2.blocks.0.norm.weight,
+pvss_us_weight_dec1_pha,ssm_in_norm_b,ssm_in_norm_b.bin,pvss_us_weight_dec1_pha/ssm_in_norm_b.bin,float32,64,64,layers_decoder_phase.2.blocks.0.norm.bias,
+pvss_us_weight_dec1_pha,ssm_in_projection_w,ssm_in_projection_w.bin,pvss_us_weight_dec1_pha/ssm_in_projection_w.bin,int8,256,32x8,layers_decoder_phase.2.blocks.0.ss2d.in_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec1_pha,ssm_in_projection_w_quant_scale,ssm_in_projection_w_quant_scale.bin,pvss_us_weight_dec1_pha/ssm_in_projection_w_quant_scale.bin,float32,8,8,layers_decoder_phase.2.blocks.0.ss2d.in_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec1_pha,ssm_in_projection_w_dequant_scale,ssm_in_projection_w_dequant_scale.bin,pvss_us_weight_dec1_pha/ssm_in_projection_w_dequant_scale.bin,float32,32,32,layers_decoder_phase.2.blocks.0.ss2d.in_proj.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec1_pha,ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,pvss_us_weight_dec1_pha/ssm_dw_conv2d_w.bin,int8,144,16x3x3,layers_decoder_phase.2.blocks.0.ss2d.conv2d.weight_int8,as stored (no refold)
+pvss_us_weight_dec1_pha,ssm_dw_conv2d_w_quant_scale,ssm_dw_conv2d_w_quant_scale.bin,pvss_us_weight_dec1_pha/ssm_dw_conv2d_w_quant_scale.bin,float32,16,16,layers_decoder_phase.2.blocks.0.ss2d.conv2d.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec1_pha,ssm_dw_conv2d_w_dequant_scale,ssm_dw_conv2d_w_dequant_scale.bin,pvss_us_weight_dec1_pha/ssm_dw_conv2d_w_dequant_scale.bin,float32,16,16,layers_decoder_phase.2.blocks.0.ss2d.conv2d.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec1_pha,ssm_dw_conv2d_b_i32,ssm_dw_conv2d_b_i32.bin,pvss_us_weight_dec1_pha/ssm_dw_conv2d_b_i32.bin,int32,16,16,layers_decoder_phase.2.blocks.0.ss2d.conv2d.bias,round(bias_f32 / dequant_scale)
+pvss_us_weight_dec1_pha,ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,pvss_us_weight_dec1_pha/ssm_dw_conv1d_w.bin,float32,192,12x16,layers_decoder_phase.2.blocks.0.ss2d.x_proj_conv.weight,
+pvss_us_weight_dec1_pha,ssm_dt_projection_w,ssm_dt_projection_w.bin,pvss_us_weight_dec1_pha/ssm_dt_projection_w.bin,float32,64,64x1,layers_decoder_phase.2.blocks.0.ss2d.dt_proj_conv.weight,
+pvss_us_weight_dec1_pha,ssm_A,ssm_A.bin,pvss_us_weight_dec1_pha/ssm_A.bin,float32,64,64x1,layers_decoder_phase.2.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+pvss_us_weight_dec1_pha,ssm_Ds,ssm_Ds.bin,pvss_us_weight_dec1_pha/ssm_Ds.bin,float32,64,64,layers_decoder_phase.2.blocks.0.ss2d.Ds,
+pvss_us_weight_dec1_pha,ssm_delta_bias,ssm_delta_bias.bin,pvss_us_weight_dec1_pha/ssm_delta_bias.bin,float32,64,64,layers_decoder_phase.2.blocks.0.ss2d.dt_projs_bias,
+pvss_us_weight_dec1_pha,ssm_out_norm_w,ssm_out_norm_w.bin,pvss_us_weight_dec1_pha/ssm_out_norm_w.bin,float32,16,16,layers_decoder_phase.2.blocks.0.ss2d.out_norm.weight,
+pvss_us_weight_dec1_pha,ssm_out_norm_b,ssm_out_norm_b.bin,pvss_us_weight_dec1_pha/ssm_out_norm_b.bin,float32,16,16,layers_decoder_phase.2.blocks.0.ss2d.out_norm.bias,
+pvss_us_weight_dec1_pha,ssm_out_projection_w,ssm_out_projection_w.bin,pvss_us_weight_dec1_pha/ssm_out_projection_w.bin,int8,128,8x16,layers_decoder_phase.2.blocks.0.ss2d.out_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec1_pha,ssm_out_projection_w_quant_scale,ssm_out_projection_w_quant_scale.bin,pvss_us_weight_dec1_pha/ssm_out_projection_w_quant_scale.bin,float32,16,16,layers_decoder_phase.2.blocks.0.ss2d.out_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec1_pha,ssm_out_projection_w_dequant_scale,ssm_out_projection_w_dequant_scale.bin,pvss_us_weight_dec1_pha/ssm_out_projection_w_dequant_scale.bin,float32,8,8,layers_decoder_phase.2.blocks.0.ss2d.out_proj.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec1_pha,mlp_norm_w,mlp_norm_w.bin,pvss_us_weight_dec1_pha/mlp_norm_w.bin,float32,64,64,layers_decoder_phase.2.blocks.0.norm2.weight,
+pvss_us_weight_dec1_pha,mlp_norm_b,mlp_norm_b.bin,pvss_us_weight_dec1_pha/mlp_norm_b.bin,float32,64,64,layers_decoder_phase.2.blocks.0.norm2.bias,
+pvss_us_weight_dec1_pha,mlp_fc1_w,mlp_fc1_w.bin,pvss_us_weight_dec1_pha/mlp_fc1_w.bin,int8,4096,64x64,layers_decoder_phase.2.blocks.0.mlp.fc1.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec1_pha,mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,pvss_us_weight_dec1_pha/mlp_fc1_w_quant_scale.bin,float32,64,64,layers_decoder_phase.2.blocks.0.mlp.fc1.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec1_pha,mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,pvss_us_weight_dec1_pha/mlp_fc1_w_dequant_scale.bin,float32,64,64,layers_decoder_phase.2.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec1_pha,mlp_fc1_b_i32,mlp_fc1_b_i32.bin,pvss_us_weight_dec1_pha/mlp_fc1_b_i32.bin,int32,64,64,layers_decoder_phase.2.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+pvss_us_weight_dec1_pha,mlp_fc2_w,mlp_fc2_w.bin,pvss_us_weight_dec1_pha/mlp_fc2_w.bin,int8,4096,64x64,layers_decoder_phase.2.blocks.0.mlp.fc2.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec1_pha,mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,pvss_us_weight_dec1_pha/mlp_fc2_w_quant_scale.bin,float32,64,64,layers_decoder_phase.2.blocks.0.mlp.fc2.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec1_pha,mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,pvss_us_weight_dec1_pha/mlp_fc2_w_dequant_scale.bin,float32,64,64,layers_decoder_phase.2.blocks.0.mlp.fc2.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec1_pha,mlp_fc2_b_i32,mlp_fc2_b_i32.bin,pvss_us_weight_dec1_pha/mlp_fc2_b_i32.bin,int32,64,64,layers_decoder_phase.2.blocks.0.mlp.fc2.bias,round(bias_f32 / dequant_scale)
+pvss_us_weight_dec1_pha,pe_w,pe_w.bin,pvss_us_weight_dec1_pha/pe_w.bin,int8,8192,128x64,layers_decoder_phase.2.sampler.expand.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec1_pha,pe_w_quant_scale,pe_w_quant_scale.bin,pvss_us_weight_dec1_pha/pe_w_quant_scale.bin,float32,64,64,layers_decoder_phase.2.sampler.expand.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec1_pha,pe_w_dequant_scale,pe_w_dequant_scale.bin,pvss_us_weight_dec1_pha/pe_w_dequant_scale.bin,float32,128,128,layers_decoder_phase.2.sampler.expand.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec1_pha,pe_norm_w,pe_norm_w.bin,pvss_us_weight_dec1_pha/pe_norm_w.bin,float32,32,32,layers_decoder_phase.2.sampler.norm.weight,
+pvss_us_weight_dec1_pha,pe_norm_b,pe_norm_b.bin,pvss_us_weight_dec1_pha/pe_norm_b.bin,float32,32,32,layers_decoder_phase.2.sampler.norm.bias,
+pvss_us_weight_dec2_mag,ssm_in_norm_w,ssm_in_norm_w.bin,pvss_us_weight_dec2_mag/ssm_in_norm_w.bin,float32,32,32,layers_decoder_mag.3.blocks.0.norm.weight,
+pvss_us_weight_dec2_mag,ssm_in_norm_b,ssm_in_norm_b.bin,pvss_us_weight_dec2_mag/ssm_in_norm_b.bin,float32,32,32,layers_decoder_mag.3.blocks.0.norm.bias,
+pvss_us_weight_dec2_mag,ssm_in_projection_w,ssm_in_projection_w.bin,pvss_us_weight_dec2_mag/ssm_in_projection_w.bin,int8,64,16x4,layers_decoder_mag.3.blocks.0.ss2d.in_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec2_mag,ssm_in_projection_w_quant_scale,ssm_in_projection_w_quant_scale.bin,pvss_us_weight_dec2_mag/ssm_in_projection_w_quant_scale.bin,float32,4,4,layers_decoder_mag.3.blocks.0.ss2d.in_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec2_mag,ssm_in_projection_w_dequant_scale,ssm_in_projection_w_dequant_scale.bin,pvss_us_weight_dec2_mag/ssm_in_projection_w_dequant_scale.bin,float32,16,16,layers_decoder_mag.3.blocks.0.ss2d.in_proj.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec2_mag,ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,pvss_us_weight_dec2_mag/ssm_dw_conv2d_w.bin,int8,72,8x3x3,layers_decoder_mag.3.blocks.0.ss2d.conv2d.weight_int8,as stored (no refold)
+pvss_us_weight_dec2_mag,ssm_dw_conv2d_w_quant_scale,ssm_dw_conv2d_w_quant_scale.bin,pvss_us_weight_dec2_mag/ssm_dw_conv2d_w_quant_scale.bin,float32,8,8,layers_decoder_mag.3.blocks.0.ss2d.conv2d.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec2_mag,ssm_dw_conv2d_w_dequant_scale,ssm_dw_conv2d_w_dequant_scale.bin,pvss_us_weight_dec2_mag/ssm_dw_conv2d_w_dequant_scale.bin,float32,8,8,layers_decoder_mag.3.blocks.0.ss2d.conv2d.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec2_mag,ssm_dw_conv2d_b_i32,ssm_dw_conv2d_b_i32.bin,pvss_us_weight_dec2_mag/ssm_dw_conv2d_b_i32.bin,int32,8,8,layers_decoder_mag.3.blocks.0.ss2d.conv2d.bias,round(bias_f32 / dequant_scale)
+pvss_us_weight_dec2_mag,ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,pvss_us_weight_dec2_mag/ssm_dw_conv1d_w.bin,float32,96,12x8,layers_decoder_mag.3.blocks.0.ss2d.x_proj_conv.weight,
+pvss_us_weight_dec2_mag,ssm_dt_projection_w,ssm_dt_projection_w.bin,pvss_us_weight_dec2_mag/ssm_dt_projection_w.bin,float32,32,32x1,layers_decoder_mag.3.blocks.0.ss2d.dt_proj_conv.weight,
+pvss_us_weight_dec2_mag,ssm_A,ssm_A.bin,pvss_us_weight_dec2_mag/ssm_A.bin,float32,32,32x1,layers_decoder_mag.3.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+pvss_us_weight_dec2_mag,ssm_Ds,ssm_Ds.bin,pvss_us_weight_dec2_mag/ssm_Ds.bin,float32,32,32,layers_decoder_mag.3.blocks.0.ss2d.Ds,
+pvss_us_weight_dec2_mag,ssm_delta_bias,ssm_delta_bias.bin,pvss_us_weight_dec2_mag/ssm_delta_bias.bin,float32,32,32,layers_decoder_mag.3.blocks.0.ss2d.dt_projs_bias,
+pvss_us_weight_dec2_mag,ssm_out_norm_w,ssm_out_norm_w.bin,pvss_us_weight_dec2_mag/ssm_out_norm_w.bin,float32,8,8,layers_decoder_mag.3.blocks.0.ss2d.out_norm.weight,
+pvss_us_weight_dec2_mag,ssm_out_norm_b,ssm_out_norm_b.bin,pvss_us_weight_dec2_mag/ssm_out_norm_b.bin,float32,8,8,layers_decoder_mag.3.blocks.0.ss2d.out_norm.bias,
+pvss_us_weight_dec2_mag,ssm_out_projection_w,ssm_out_projection_w.bin,pvss_us_weight_dec2_mag/ssm_out_projection_w.bin,int8,32,4x8,layers_decoder_mag.3.blocks.0.ss2d.out_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec2_mag,ssm_out_projection_w_quant_scale,ssm_out_projection_w_quant_scale.bin,pvss_us_weight_dec2_mag/ssm_out_projection_w_quant_scale.bin,float32,8,8,layers_decoder_mag.3.blocks.0.ss2d.out_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec2_mag,ssm_out_projection_w_dequant_scale,ssm_out_projection_w_dequant_scale.bin,pvss_us_weight_dec2_mag/ssm_out_projection_w_dequant_scale.bin,float32,4,4,layers_decoder_mag.3.blocks.0.ss2d.out_proj.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec2_mag,mlp_norm_w,mlp_norm_w.bin,pvss_us_weight_dec2_mag/mlp_norm_w.bin,float32,32,32,layers_decoder_mag.3.blocks.0.norm2.weight,
+pvss_us_weight_dec2_mag,mlp_norm_b,mlp_norm_b.bin,pvss_us_weight_dec2_mag/mlp_norm_b.bin,float32,32,32,layers_decoder_mag.3.blocks.0.norm2.bias,
+pvss_us_weight_dec2_mag,mlp_fc1_w,mlp_fc1_w.bin,pvss_us_weight_dec2_mag/mlp_fc1_w.bin,int8,1024,32x32,layers_decoder_mag.3.blocks.0.mlp.fc1.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec2_mag,mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,pvss_us_weight_dec2_mag/mlp_fc1_w_quant_scale.bin,float32,32,32,layers_decoder_mag.3.blocks.0.mlp.fc1.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec2_mag,mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,pvss_us_weight_dec2_mag/mlp_fc1_w_dequant_scale.bin,float32,32,32,layers_decoder_mag.3.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec2_mag,mlp_fc1_b_i32,mlp_fc1_b_i32.bin,pvss_us_weight_dec2_mag/mlp_fc1_b_i32.bin,int32,32,32,layers_decoder_mag.3.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+pvss_us_weight_dec2_mag,mlp_fc2_w,mlp_fc2_w.bin,pvss_us_weight_dec2_mag/mlp_fc2_w.bin,int8,1024,32x32,layers_decoder_mag.3.blocks.0.mlp.fc2.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec2_mag,mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,pvss_us_weight_dec2_mag/mlp_fc2_w_quant_scale.bin,float32,32,32,layers_decoder_mag.3.blocks.0.mlp.fc2.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec2_mag,mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,pvss_us_weight_dec2_mag/mlp_fc2_w_dequant_scale.bin,float32,32,32,layers_decoder_mag.3.blocks.0.mlp.fc2.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec2_mag,mlp_fc2_b_i32,mlp_fc2_b_i32.bin,pvss_us_weight_dec2_mag/mlp_fc2_b_i32.bin,int32,32,32,layers_decoder_mag.3.blocks.0.mlp.fc2.bias,round(bias_f32 / dequant_scale)
+pvss_us_weight_dec2_mag,pe_w,pe_w.bin,pvss_us_weight_dec2_mag/pe_w.bin,int8,2048,64x32,layers_decoder_mag.3.sampler.expand.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec2_mag,pe_w_quant_scale,pe_w_quant_scale.bin,pvss_us_weight_dec2_mag/pe_w_quant_scale.bin,float32,32,32,layers_decoder_mag.3.sampler.expand.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec2_mag,pe_w_dequant_scale,pe_w_dequant_scale.bin,pvss_us_weight_dec2_mag/pe_w_dequant_scale.bin,float32,64,64,layers_decoder_mag.3.sampler.expand.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec2_mag,pe_norm_w,pe_norm_w.bin,pvss_us_weight_dec2_mag/pe_norm_w.bin,float32,16,16,layers_decoder_mag.3.sampler.norm.weight,
+pvss_us_weight_dec2_mag,pe_norm_b,pe_norm_b.bin,pvss_us_weight_dec2_mag/pe_norm_b.bin,float32,16,16,layers_decoder_mag.3.sampler.norm.bias,
+pvss_us_weight_dec2_pha,ssm_in_norm_w,ssm_in_norm_w.bin,pvss_us_weight_dec2_pha/ssm_in_norm_w.bin,float32,32,32,layers_decoder_phase.3.blocks.0.norm.weight,
+pvss_us_weight_dec2_pha,ssm_in_norm_b,ssm_in_norm_b.bin,pvss_us_weight_dec2_pha/ssm_in_norm_b.bin,float32,32,32,layers_decoder_phase.3.blocks.0.norm.bias,
+pvss_us_weight_dec2_pha,ssm_in_projection_w,ssm_in_projection_w.bin,pvss_us_weight_dec2_pha/ssm_in_projection_w.bin,int8,64,16x4,layers_decoder_phase.3.blocks.0.ss2d.in_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec2_pha,ssm_in_projection_w_quant_scale,ssm_in_projection_w_quant_scale.bin,pvss_us_weight_dec2_pha/ssm_in_projection_w_quant_scale.bin,float32,4,4,layers_decoder_phase.3.blocks.0.ss2d.in_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec2_pha,ssm_in_projection_w_dequant_scale,ssm_in_projection_w_dequant_scale.bin,pvss_us_weight_dec2_pha/ssm_in_projection_w_dequant_scale.bin,float32,16,16,layers_decoder_phase.3.blocks.0.ss2d.in_proj.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec2_pha,ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,pvss_us_weight_dec2_pha/ssm_dw_conv2d_w.bin,int8,72,8x3x3,layers_decoder_phase.3.blocks.0.ss2d.conv2d.weight_int8,as stored (no refold)
+pvss_us_weight_dec2_pha,ssm_dw_conv2d_w_quant_scale,ssm_dw_conv2d_w_quant_scale.bin,pvss_us_weight_dec2_pha/ssm_dw_conv2d_w_quant_scale.bin,float32,8,8,layers_decoder_phase.3.blocks.0.ss2d.conv2d.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec2_pha,ssm_dw_conv2d_w_dequant_scale,ssm_dw_conv2d_w_dequant_scale.bin,pvss_us_weight_dec2_pha/ssm_dw_conv2d_w_dequant_scale.bin,float32,8,8,layers_decoder_phase.3.blocks.0.ss2d.conv2d.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec2_pha,ssm_dw_conv2d_b_i32,ssm_dw_conv2d_b_i32.bin,pvss_us_weight_dec2_pha/ssm_dw_conv2d_b_i32.bin,int32,8,8,layers_decoder_phase.3.blocks.0.ss2d.conv2d.bias,round(bias_f32 / dequant_scale)
+pvss_us_weight_dec2_pha,ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,pvss_us_weight_dec2_pha/ssm_dw_conv1d_w.bin,float32,96,12x8,layers_decoder_phase.3.blocks.0.ss2d.x_proj_conv.weight,
+pvss_us_weight_dec2_pha,ssm_dt_projection_w,ssm_dt_projection_w.bin,pvss_us_weight_dec2_pha/ssm_dt_projection_w.bin,float32,32,32x1,layers_decoder_phase.3.blocks.0.ss2d.dt_proj_conv.weight,
+pvss_us_weight_dec2_pha,ssm_A,ssm_A.bin,pvss_us_weight_dec2_pha/ssm_A.bin,float32,32,32x1,layers_decoder_phase.3.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+pvss_us_weight_dec2_pha,ssm_Ds,ssm_Ds.bin,pvss_us_weight_dec2_pha/ssm_Ds.bin,float32,32,32,layers_decoder_phase.3.blocks.0.ss2d.Ds,
+pvss_us_weight_dec2_pha,ssm_delta_bias,ssm_delta_bias.bin,pvss_us_weight_dec2_pha/ssm_delta_bias.bin,float32,32,32,layers_decoder_phase.3.blocks.0.ss2d.dt_projs_bias,
+pvss_us_weight_dec2_pha,ssm_out_norm_w,ssm_out_norm_w.bin,pvss_us_weight_dec2_pha/ssm_out_norm_w.bin,float32,8,8,layers_decoder_phase.3.blocks.0.ss2d.out_norm.weight,
+pvss_us_weight_dec2_pha,ssm_out_norm_b,ssm_out_norm_b.bin,pvss_us_weight_dec2_pha/ssm_out_norm_b.bin,float32,8,8,layers_decoder_phase.3.blocks.0.ss2d.out_norm.bias,
+pvss_us_weight_dec2_pha,ssm_out_projection_w,ssm_out_projection_w.bin,pvss_us_weight_dec2_pha/ssm_out_projection_w.bin,int8,32,4x8,layers_decoder_phase.3.blocks.0.ss2d.out_proj.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec2_pha,ssm_out_projection_w_quant_scale,ssm_out_projection_w_quant_scale.bin,pvss_us_weight_dec2_pha/ssm_out_projection_w_quant_scale.bin,float32,8,8,layers_decoder_phase.3.blocks.0.ss2d.out_proj.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec2_pha,ssm_out_projection_w_dequant_scale,ssm_out_projection_w_dequant_scale.bin,pvss_us_weight_dec2_pha/ssm_out_projection_w_dequant_scale.bin,float32,4,4,layers_decoder_phase.3.blocks.0.ss2d.out_proj.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec2_pha,mlp_norm_w,mlp_norm_w.bin,pvss_us_weight_dec2_pha/mlp_norm_w.bin,float32,32,32,layers_decoder_phase.3.blocks.0.norm2.weight,
+pvss_us_weight_dec2_pha,mlp_norm_b,mlp_norm_b.bin,pvss_us_weight_dec2_pha/mlp_norm_b.bin,float32,32,32,layers_decoder_phase.3.blocks.0.norm2.bias,
+pvss_us_weight_dec2_pha,mlp_fc1_w,mlp_fc1_w.bin,pvss_us_weight_dec2_pha/mlp_fc1_w.bin,int8,1024,32x32,layers_decoder_phase.3.blocks.0.mlp.fc1.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec2_pha,mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,pvss_us_weight_dec2_pha/mlp_fc1_w_quant_scale.bin,float32,32,32,layers_decoder_phase.3.blocks.0.mlp.fc1.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec2_pha,mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,pvss_us_weight_dec2_pha/mlp_fc1_w_dequant_scale.bin,float32,32,32,layers_decoder_phase.3.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec2_pha,mlp_fc1_b_i32,mlp_fc1_b_i32.bin,pvss_us_weight_dec2_pha/mlp_fc1_b_i32.bin,int32,32,32,layers_decoder_phase.3.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+pvss_us_weight_dec2_pha,mlp_fc2_w,mlp_fc2_w.bin,pvss_us_weight_dec2_pha/mlp_fc2_w.bin,int8,1024,32x32,layers_decoder_phase.3.blocks.0.mlp.fc2.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec2_pha,mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,pvss_us_weight_dec2_pha/mlp_fc2_w_quant_scale.bin,float32,32,32,layers_decoder_phase.3.blocks.0.mlp.fc2.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec2_pha,mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,pvss_us_weight_dec2_pha/mlp_fc2_w_dequant_scale.bin,float32,32,32,layers_decoder_phase.3.blocks.0.mlp.fc2.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec2_pha,mlp_fc2_b_i32,mlp_fc2_b_i32.bin,pvss_us_weight_dec2_pha/mlp_fc2_b_i32.bin,int32,32,32,layers_decoder_phase.3.blocks.0.mlp.fc2.bias,round(bias_f32 / dequant_scale)
+pvss_us_weight_dec2_pha,pe_w,pe_w.bin,pvss_us_weight_dec2_pha/pe_w.bin,int8,2048,64x32,layers_decoder_phase.3.sampler.expand.weight_int8,"act scale folded, requantized per OC"
+pvss_us_weight_dec2_pha,pe_w_quant_scale,pe_w_quant_scale.bin,pvss_us_weight_dec2_pha/pe_w_quant_scale.bin,float32,32,32,layers_decoder_phase.3.sampler.expand.a_scale,sq_s*a_scale*a_scale_mul
+pvss_us_weight_dec2_pha,pe_w_dequant_scale,pe_w_dequant_scale.bin,pvss_us_weight_dec2_pha/pe_w_dequant_scale.bin,float32,64,64,layers_decoder_phase.3.sampler.expand.w_scale,per-OC; int32 acc -> f32
+pvss_us_weight_dec2_pha,pe_norm_w,pe_norm_w.bin,pvss_us_weight_dec2_pha/pe_norm_w.bin,float32,16,16,layers_decoder_phase.3.sampler.norm.weight,
+pvss_us_weight_dec2_pha,pe_norm_b,pe_norm_b.bin,pvss_us_weight_dec2_pha/pe_norm_b.bin,float32,16,16,layers_decoder_phase.3.sampler.norm.bias,
+vss_output0_weight_mag,ssm_in_projection_w,ssm_in_projection_w.bin,vss_output0_weight_mag/ssm_in_projection_w.bin,float32,64,16x4,output_layer_mag.0.blocks.0.ss2d.in_proj.weight,
+vss_output0_weight_mag,ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,vss_output0_weight_mag/ssm_dw_conv2d_w.bin,float32,72,8x3x3,output_layer_mag.0.blocks.0.ss2d.conv2d.weight,
+vss_output0_weight_mag,ssm_dw_conv2d_b,ssm_dw_conv2d_b.bin,vss_output0_weight_mag/ssm_dw_conv2d_b.bin,float32,8,8,output_layer_mag.0.blocks.0.ss2d.conv2d.bias,
+vss_output0_weight_mag,ssm_out_projection_w,ssm_out_projection_w.bin,vss_output0_weight_mag/ssm_out_projection_w.bin,float32,32,4x8,output_layer_mag.0.blocks.0.ss2d.out_proj.weight,
+vss_output0_weight_mag,ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,vss_output0_weight_mag/ssm_dw_conv1d_w.bin,float32,96,12x8,output_layer_mag.0.blocks.0.ss2d.x_proj_conv.weight,
+vss_output0_weight_mag,ssm_dt_projection_w,ssm_dt_projection_w.bin,vss_output0_weight_mag/ssm_dt_projection_w.bin,float32,32,32x1,output_layer_mag.0.blocks.0.ss2d.dt_proj_conv.weight,
+vss_output0_weight_mag,ssm_A,ssm_A.bin,vss_output0_weight_mag/ssm_A.bin,float32,32,32x1,output_layer_mag.0.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+vss_output0_weight_mag,ssm_Ds,ssm_Ds.bin,vss_output0_weight_mag/ssm_Ds.bin,float32,32,32,output_layer_mag.0.blocks.0.ss2d.Ds,
+vss_output0_weight_mag,ssm_delta_bias,ssm_delta_bias.bin,vss_output0_weight_mag/ssm_delta_bias.bin,float32,32,32,output_layer_mag.0.blocks.0.ss2d.dt_projs_bias,
+vss_output0_weight_mag,ssm_out_norm_w,ssm_out_norm_w.bin,vss_output0_weight_mag/ssm_out_norm_w.bin,float32,8,8,output_layer_mag.0.blocks.0.ss2d.out_norm.weight,
+vss_output0_weight_mag,ssm_out_norm_b,ssm_out_norm_b.bin,vss_output0_weight_mag/ssm_out_norm_b.bin,float32,8,8,output_layer_mag.0.blocks.0.ss2d.out_norm.bias,
+vss_output0_weight_mag,mlp_fc1_w,mlp_fc1_w.bin,vss_output0_weight_mag/mlp_fc1_w.bin,int8,512,32x16,output_layer_mag.0.blocks.0.mlp.fc1.weight_int8,"act scale folded, requantized per OC"
+vss_output0_weight_mag,mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,vss_output0_weight_mag/mlp_fc1_w_quant_scale.bin,float32,16,16,output_layer_mag.0.blocks.0.mlp.fc1.a_scale,sq_s*a_scale*a_scale_mul
+vss_output0_weight_mag,mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,vss_output0_weight_mag/mlp_fc1_w_dequant_scale.bin,float32,32,32,output_layer_mag.0.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+vss_output0_weight_mag,mlp_fc1_b_i32,mlp_fc1_b_i32.bin,vss_output0_weight_mag/mlp_fc1_b_i32.bin,int32,32,32,output_layer_mag.0.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+vss_output0_weight_mag,mlp_fc2_w,mlp_fc2_w.bin,vss_output0_weight_mag/mlp_fc2_w.bin,int8,512,16x32,output_layer_mag.0.blocks.0.mlp.fc2.weight_int8,"act scale folded, requantized per OC"
+vss_output0_weight_mag,mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,vss_output0_weight_mag/mlp_fc2_w_quant_scale.bin,float32,32,32,output_layer_mag.0.blocks.0.mlp.fc2.a_scale,sq_s*a_scale*a_scale_mul
+vss_output0_weight_mag,mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,vss_output0_weight_mag/mlp_fc2_w_dequant_scale.bin,float32,16,16,output_layer_mag.0.blocks.0.mlp.fc2.w_scale,per-OC; int32 acc -> f32
+vss_output0_weight_mag,mlp_fc2_b_i32,mlp_fc2_b_i32.bin,vss_output0_weight_mag/mlp_fc2_b_i32.bin,int32,16,16,output_layer_mag.0.blocks.0.mlp.fc2.bias,round(bias_f32 / dequant_scale)
+vss_output0_weight_mag,pe_w,pe_w.bin,vss_output0_weight_mag/pe_w.bin,int8,512,32x16,output_layer_mag.0.sampler.expand.weight_int8,"act scale folded, requantized per OC"
+vss_output0_weight_mag,pe_w_quant_scale,pe_w_quant_scale.bin,vss_output0_weight_mag/pe_w_quant_scale.bin,float32,16,16,output_layer_mag.0.sampler.expand.a_scale,sq_s*a_scale*a_scale_mul
+vss_output0_weight_mag,pe_w_dequant_scale,pe_w_dequant_scale.bin,vss_output0_weight_mag/pe_w_dequant_scale.bin,float32,32,32,output_layer_mag.0.sampler.expand.w_scale,per-OC; int32 acc -> f32
+vss_output0_weight_mag,pe_norm_w,pe_norm_w.bin,vss_output0_weight_mag/pe_norm_w.bin,float32,8,8,output_layer_mag.0.sampler.norm.weight,
+vss_output0_weight_mag,pe_norm_b,pe_norm_b.bin,vss_output0_weight_mag/pe_norm_b.bin,float32,8,8,output_layer_mag.0.sampler.norm.bias,
+vss_output0_weight_pha,ssm_in_projection_w,ssm_in_projection_w.bin,vss_output0_weight_pha/ssm_in_projection_w.bin,float32,64,16x4,output_layer_phase.0.blocks.0.ss2d.in_proj.weight,
+vss_output0_weight_pha,ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,vss_output0_weight_pha/ssm_dw_conv2d_w.bin,float32,72,8x3x3,output_layer_phase.0.blocks.0.ss2d.conv2d.weight,
+vss_output0_weight_pha,ssm_dw_conv2d_b,ssm_dw_conv2d_b.bin,vss_output0_weight_pha/ssm_dw_conv2d_b.bin,float32,8,8,output_layer_phase.0.blocks.0.ss2d.conv2d.bias,
+vss_output0_weight_pha,ssm_out_projection_w,ssm_out_projection_w.bin,vss_output0_weight_pha/ssm_out_projection_w.bin,float32,32,4x8,output_layer_phase.0.blocks.0.ss2d.out_proj.weight,
+vss_output0_weight_pha,ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,vss_output0_weight_pha/ssm_dw_conv1d_w.bin,float32,96,12x8,output_layer_phase.0.blocks.0.ss2d.x_proj_conv.weight,
+vss_output0_weight_pha,ssm_dt_projection_w,ssm_dt_projection_w.bin,vss_output0_weight_pha/ssm_dt_projection_w.bin,float32,32,32x1,output_layer_phase.0.blocks.0.ss2d.dt_proj_conv.weight,
+vss_output0_weight_pha,ssm_A,ssm_A.bin,vss_output0_weight_pha/ssm_A.bin,float32,32,32x1,output_layer_phase.0.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+vss_output0_weight_pha,ssm_Ds,ssm_Ds.bin,vss_output0_weight_pha/ssm_Ds.bin,float32,32,32,output_layer_phase.0.blocks.0.ss2d.Ds,
+vss_output0_weight_pha,ssm_delta_bias,ssm_delta_bias.bin,vss_output0_weight_pha/ssm_delta_bias.bin,float32,32,32,output_layer_phase.0.blocks.0.ss2d.dt_projs_bias,
+vss_output0_weight_pha,ssm_out_norm_w,ssm_out_norm_w.bin,vss_output0_weight_pha/ssm_out_norm_w.bin,float32,8,8,output_layer_phase.0.blocks.0.ss2d.out_norm.weight,
+vss_output0_weight_pha,ssm_out_norm_b,ssm_out_norm_b.bin,vss_output0_weight_pha/ssm_out_norm_b.bin,float32,8,8,output_layer_phase.0.blocks.0.ss2d.out_norm.bias,
+vss_output0_weight_pha,mlp_fc1_w,mlp_fc1_w.bin,vss_output0_weight_pha/mlp_fc1_w.bin,int8,512,32x16,output_layer_phase.0.blocks.0.mlp.fc1.weight_int8,"act scale folded, requantized per OC"
+vss_output0_weight_pha,mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,vss_output0_weight_pha/mlp_fc1_w_quant_scale.bin,float32,16,16,output_layer_phase.0.blocks.0.mlp.fc1.a_scale,sq_s*a_scale*a_scale_mul
+vss_output0_weight_pha,mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,vss_output0_weight_pha/mlp_fc1_w_dequant_scale.bin,float32,32,32,output_layer_phase.0.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+vss_output0_weight_pha,mlp_fc1_b_i32,mlp_fc1_b_i32.bin,vss_output0_weight_pha/mlp_fc1_b_i32.bin,int32,32,32,output_layer_phase.0.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+vss_output0_weight_pha,mlp_fc2_w,mlp_fc2_w.bin,vss_output0_weight_pha/mlp_fc2_w.bin,int8,512,16x32,output_layer_phase.0.blocks.0.mlp.fc2.weight_int8,"act scale folded, requantized per OC"
+vss_output0_weight_pha,mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,vss_output0_weight_pha/mlp_fc2_w_quant_scale.bin,float32,32,32,output_layer_phase.0.blocks.0.mlp.fc2.a_scale,sq_s*a_scale*a_scale_mul
+vss_output0_weight_pha,mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,vss_output0_weight_pha/mlp_fc2_w_dequant_scale.bin,float32,16,16,output_layer_phase.0.blocks.0.mlp.fc2.w_scale,per-OC; int32 acc -> f32
+vss_output0_weight_pha,mlp_fc2_b_i32,mlp_fc2_b_i32.bin,vss_output0_weight_pha/mlp_fc2_b_i32.bin,int32,16,16,output_layer_phase.0.blocks.0.mlp.fc2.bias,round(bias_f32 / dequant_scale)
+vss_output0_weight_pha,pe_w,pe_w.bin,vss_output0_weight_pha/pe_w.bin,int8,512,32x16,output_layer_phase.0.sampler.expand.weight_int8,"act scale folded, requantized per OC"
+vss_output0_weight_pha,pe_w_quant_scale,pe_w_quant_scale.bin,vss_output0_weight_pha/pe_w_quant_scale.bin,float32,16,16,output_layer_phase.0.sampler.expand.a_scale,sq_s*a_scale*a_scale_mul
+vss_output0_weight_pha,pe_w_dequant_scale,pe_w_dequant_scale.bin,vss_output0_weight_pha/pe_w_dequant_scale.bin,float32,32,32,output_layer_phase.0.sampler.expand.w_scale,per-OC; int32 acc -> f32
+vss_output0_weight_pha,pe_norm_w,pe_norm_w.bin,vss_output0_weight_pha/pe_norm_w.bin,float32,8,8,output_layer_phase.0.sampler.norm.weight,
+vss_output0_weight_pha,pe_norm_b,pe_norm_b.bin,vss_output0_weight_pha/pe_norm_b.bin,float32,8,8,output_layer_phase.0.sampler.norm.bias,
+vss_output1_weight_mag,ssm_in_norm_w,ssm_in_norm_w.bin,vss_output1_weight_mag/ssm_in_norm_w.bin,float32,8,8,output_layer_mag.1.blocks.0.norm.weight,
+vss_output1_weight_mag,ssm_in_norm_b,ssm_in_norm_b.bin,vss_output1_weight_mag/ssm_in_norm_b.bin,float32,8,8,output_layer_mag.1.blocks.0.norm.bias,
+vss_output1_weight_mag,ssm_in_projection_w,ssm_in_projection_w.bin,vss_output1_weight_mag/ssm_in_projection_w.bin,float32,16,8x2,output_layer_mag.1.blocks.0.ss2d.in_proj.weight,
+vss_output1_weight_mag,ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,vss_output1_weight_mag/ssm_dw_conv2d_w.bin,float32,36,4x3x3,output_layer_mag.1.blocks.0.ss2d.conv2d.weight,
+vss_output1_weight_mag,ssm_dw_conv2d_b,ssm_dw_conv2d_b.bin,vss_output1_weight_mag/ssm_dw_conv2d_b.bin,float32,4,4,output_layer_mag.1.blocks.0.ss2d.conv2d.bias,
+vss_output1_weight_mag,ssm_out_projection_w,ssm_out_projection_w.bin,vss_output1_weight_mag/ssm_out_projection_w.bin,float32,8,2x4,output_layer_mag.1.blocks.0.ss2d.out_proj.weight,
+vss_output1_weight_mag,ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,vss_output1_weight_mag/ssm_dw_conv1d_w.bin,float32,48,12x4,output_layer_mag.1.blocks.0.ss2d.x_proj_conv.weight,
+vss_output1_weight_mag,ssm_dt_projection_w,ssm_dt_projection_w.bin,vss_output1_weight_mag/ssm_dt_projection_w.bin,float32,16,16x1,output_layer_mag.1.blocks.0.ss2d.dt_proj_conv.weight,
+vss_output1_weight_mag,ssm_A,ssm_A.bin,vss_output1_weight_mag/ssm_A.bin,float32,16,16x1,output_layer_mag.1.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+vss_output1_weight_mag,ssm_Ds,ssm_Ds.bin,vss_output1_weight_mag/ssm_Ds.bin,float32,16,16,output_layer_mag.1.blocks.0.ss2d.Ds,
+vss_output1_weight_mag,ssm_delta_bias,ssm_delta_bias.bin,vss_output1_weight_mag/ssm_delta_bias.bin,float32,16,16,output_layer_mag.1.blocks.0.ss2d.dt_projs_bias,
+vss_output1_weight_mag,ssm_out_norm_w,ssm_out_norm_w.bin,vss_output1_weight_mag/ssm_out_norm_w.bin,float32,4,4,output_layer_mag.1.blocks.0.ss2d.out_norm.weight,
+vss_output1_weight_mag,ssm_out_norm_b,ssm_out_norm_b.bin,vss_output1_weight_mag/ssm_out_norm_b.bin,float32,4,4,output_layer_mag.1.blocks.0.ss2d.out_norm.bias,
+vss_output1_weight_mag,mlp_norm_w,mlp_norm_w.bin,vss_output1_weight_mag/mlp_norm_w.bin,float32,8,8,output_layer_mag.1.blocks.0.norm2.weight,
+vss_output1_weight_mag,mlp_norm_b,mlp_norm_b.bin,vss_output1_weight_mag/mlp_norm_b.bin,float32,8,8,output_layer_mag.1.blocks.0.norm2.bias,
+vss_output1_weight_mag,mlp_fc1_w,mlp_fc1_w.bin,vss_output1_weight_mag/mlp_fc1_w.bin,int8,128,16x8,output_layer_mag.1.blocks.0.mlp.fc1.weight_int8,"act scale folded, requantized per OC"
+vss_output1_weight_mag,mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,vss_output1_weight_mag/mlp_fc1_w_quant_scale.bin,float32,8,8,output_layer_mag.1.blocks.0.mlp.fc1.a_scale,sq_s*a_scale*a_scale_mul
+vss_output1_weight_mag,mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,vss_output1_weight_mag/mlp_fc1_w_dequant_scale.bin,float32,16,16,output_layer_mag.1.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+vss_output1_weight_mag,mlp_fc1_b_i32,mlp_fc1_b_i32.bin,vss_output1_weight_mag/mlp_fc1_b_i32.bin,int32,16,16,output_layer_mag.1.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+vss_output1_weight_mag,mlp_fc2_w,mlp_fc2_w.bin,vss_output1_weight_mag/mlp_fc2_w.bin,int8,128,8x16,output_layer_mag.1.blocks.0.mlp.fc2.weight_int8,"act scale folded, requantized per OC"
+vss_output1_weight_mag,mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,vss_output1_weight_mag/mlp_fc2_w_quant_scale.bin,float32,16,16,output_layer_mag.1.blocks.0.mlp.fc2.a_scale,sq_s*a_scale*a_scale_mul
+vss_output1_weight_mag,mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,vss_output1_weight_mag/mlp_fc2_w_dequant_scale.bin,float32,8,8,output_layer_mag.1.blocks.0.mlp.fc2.w_scale,per-OC; int32 acc -> f32
+vss_output1_weight_mag,mlp_fc2_b_i32,mlp_fc2_b_i32.bin,vss_output1_weight_mag/mlp_fc2_b_i32.bin,int32,8,8,output_layer_mag.1.blocks.0.mlp.fc2.bias,round(bias_f32 / dequant_scale)
+vss_output1_weight_mag,pe_w,pe_w.bin,vss_output1_weight_mag/pe_w.bin,int8,128,16x8,output_layer_mag.1.sampler.expand.weight_int8,"act scale folded, requantized per OC"
+vss_output1_weight_mag,pe_w_quant_scale,pe_w_quant_scale.bin,vss_output1_weight_mag/pe_w_quant_scale.bin,float32,8,8,output_layer_mag.1.sampler.expand.a_scale,sq_s*a_scale*a_scale_mul
+vss_output1_weight_mag,pe_w_dequant_scale,pe_w_dequant_scale.bin,vss_output1_weight_mag/pe_w_dequant_scale.bin,float32,16,16,output_layer_mag.1.sampler.expand.w_scale,per-OC; int32 acc -> f32
+vss_output1_weight_mag,pe_norm_w,pe_norm_w.bin,vss_output1_weight_mag/pe_norm_w.bin,float32,4,4,output_layer_mag.1.sampler.norm.weight,
+vss_output1_weight_mag,pe_norm_b,pe_norm_b.bin,vss_output1_weight_mag/pe_norm_b.bin,float32,4,4,output_layer_mag.1.sampler.norm.bias,
+vss_output1_weight_pha,ssm_in_norm_w,ssm_in_norm_w.bin,vss_output1_weight_pha/ssm_in_norm_w.bin,float32,8,8,output_layer_phase.1.blocks.0.norm.weight,
+vss_output1_weight_pha,ssm_in_norm_b,ssm_in_norm_b.bin,vss_output1_weight_pha/ssm_in_norm_b.bin,float32,8,8,output_layer_phase.1.blocks.0.norm.bias,
+vss_output1_weight_pha,ssm_in_projection_w,ssm_in_projection_w.bin,vss_output1_weight_pha/ssm_in_projection_w.bin,float32,16,8x2,output_layer_phase.1.blocks.0.ss2d.in_proj.weight,
+vss_output1_weight_pha,ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,vss_output1_weight_pha/ssm_dw_conv2d_w.bin,float32,36,4x3x3,output_layer_phase.1.blocks.0.ss2d.conv2d.weight,
+vss_output1_weight_pha,ssm_dw_conv2d_b,ssm_dw_conv2d_b.bin,vss_output1_weight_pha/ssm_dw_conv2d_b.bin,float32,4,4,output_layer_phase.1.blocks.0.ss2d.conv2d.bias,
+vss_output1_weight_pha,ssm_out_projection_w,ssm_out_projection_w.bin,vss_output1_weight_pha/ssm_out_projection_w.bin,float32,8,2x4,output_layer_phase.1.blocks.0.ss2d.out_proj.weight,
+vss_output1_weight_pha,ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,vss_output1_weight_pha/ssm_dw_conv1d_w.bin,float32,48,12x4,output_layer_phase.1.blocks.0.ss2d.x_proj_conv.weight,
+vss_output1_weight_pha,ssm_dt_projection_w,ssm_dt_projection_w.bin,vss_output1_weight_pha/ssm_dt_projection_w.bin,float32,16,16x1,output_layer_phase.1.blocks.0.ss2d.dt_proj_conv.weight,
+vss_output1_weight_pha,ssm_A,ssm_A.bin,vss_output1_weight_pha/ssm_A.bin,float32,16,16x1,output_layer_phase.1.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+vss_output1_weight_pha,ssm_Ds,ssm_Ds.bin,vss_output1_weight_pha/ssm_Ds.bin,float32,16,16,output_layer_phase.1.blocks.0.ss2d.Ds,
+vss_output1_weight_pha,ssm_delta_bias,ssm_delta_bias.bin,vss_output1_weight_pha/ssm_delta_bias.bin,float32,16,16,output_layer_phase.1.blocks.0.ss2d.dt_projs_bias,
+vss_output1_weight_pha,ssm_out_norm_w,ssm_out_norm_w.bin,vss_output1_weight_pha/ssm_out_norm_w.bin,float32,4,4,output_layer_phase.1.blocks.0.ss2d.out_norm.weight,
+vss_output1_weight_pha,ssm_out_norm_b,ssm_out_norm_b.bin,vss_output1_weight_pha/ssm_out_norm_b.bin,float32,4,4,output_layer_phase.1.blocks.0.ss2d.out_norm.bias,
+vss_output1_weight_pha,mlp_norm_w,mlp_norm_w.bin,vss_output1_weight_pha/mlp_norm_w.bin,float32,8,8,output_layer_phase.1.blocks.0.norm2.weight,
+vss_output1_weight_pha,mlp_norm_b,mlp_norm_b.bin,vss_output1_weight_pha/mlp_norm_b.bin,float32,8,8,output_layer_phase.1.blocks.0.norm2.bias,
+vss_output1_weight_pha,mlp_fc1_w,mlp_fc1_w.bin,vss_output1_weight_pha/mlp_fc1_w.bin,int8,128,16x8,output_layer_phase.1.blocks.0.mlp.fc1.weight_int8,"act scale folded, requantized per OC"
+vss_output1_weight_pha,mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,vss_output1_weight_pha/mlp_fc1_w_quant_scale.bin,float32,8,8,output_layer_phase.1.blocks.0.mlp.fc1.a_scale,sq_s*a_scale*a_scale_mul
+vss_output1_weight_pha,mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,vss_output1_weight_pha/mlp_fc1_w_dequant_scale.bin,float32,16,16,output_layer_phase.1.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+vss_output1_weight_pha,mlp_fc1_b_i32,mlp_fc1_b_i32.bin,vss_output1_weight_pha/mlp_fc1_b_i32.bin,int32,16,16,output_layer_phase.1.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+vss_output1_weight_pha,mlp_fc2_w,mlp_fc2_w.bin,vss_output1_weight_pha/mlp_fc2_w.bin,int8,128,8x16,output_layer_phase.1.blocks.0.mlp.fc2.weight_int8,"act scale folded, requantized per OC"
+vss_output1_weight_pha,mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,vss_output1_weight_pha/mlp_fc2_w_quant_scale.bin,float32,16,16,output_layer_phase.1.blocks.0.mlp.fc2.a_scale,sq_s*a_scale*a_scale_mul
+vss_output1_weight_pha,mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,vss_output1_weight_pha/mlp_fc2_w_dequant_scale.bin,float32,8,8,output_layer_phase.1.blocks.0.mlp.fc2.w_scale,per-OC; int32 acc -> f32
+vss_output1_weight_pha,mlp_fc2_b_i32,mlp_fc2_b_i32.bin,vss_output1_weight_pha/mlp_fc2_b_i32.bin,int32,8,8,output_layer_phase.1.blocks.0.mlp.fc2.bias,round(bias_f32 / dequant_scale)
+vss_output1_weight_pha,pe_w,pe_w.bin,vss_output1_weight_pha/pe_w.bin,int8,128,16x8,output_layer_phase.1.sampler.expand.weight_int8,"act scale folded, requantized per OC"
+vss_output1_weight_pha,pe_w_quant_scale,pe_w_quant_scale.bin,vss_output1_weight_pha/pe_w_quant_scale.bin,float32,8,8,output_layer_phase.1.sampler.expand.a_scale,sq_s*a_scale*a_scale_mul
+vss_output1_weight_pha,pe_w_dequant_scale,pe_w_dequant_scale.bin,vss_output1_weight_pha/pe_w_dequant_scale.bin,float32,16,16,output_layer_phase.1.sampler.expand.w_scale,per-OC; int32 acc -> f32
+vss_output1_weight_pha,pe_norm_w,pe_norm_w.bin,vss_output1_weight_pha/pe_norm_w.bin,float32,4,4,output_layer_phase.1.sampler.norm.weight,
+vss_output1_weight_pha,pe_norm_b,pe_norm_b.bin,vss_output1_weight_pha/pe_norm_b.bin,float32,4,4,output_layer_phase.1.sampler.norm.bias,
+vss_output3_weight_mag,pre_conv2d_w,pre_conv2d_w.bin,vss_output3_weight_mag/pre_conv2d_w.bin,float32,4,1x4,output_layer_mag.2.weight,
+vss_output3_weight_mag,pre_conv2d_b,pre_conv2d_b.bin,vss_output3_weight_mag/pre_conv2d_b.bin,float32,1,1,output_layer_mag.2.bias,
+vss_output3_weight_mag,ssm_in_projection_w,ssm_in_projection_w.bin,vss_output3_weight_mag/ssm_in_projection_w.bin,float32,4,4x1,output_layer_mag.3.blocks.0.ss2d.in_proj.weight,
+vss_output3_weight_mag,ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,vss_output3_weight_mag/ssm_dw_conv2d_w.bin,float32,18,2x3x3,output_layer_mag.3.blocks.0.ss2d.conv2d.weight,
+vss_output3_weight_mag,ssm_dw_conv2d_b,ssm_dw_conv2d_b.bin,vss_output3_weight_mag/ssm_dw_conv2d_b.bin,float32,2,2,output_layer_mag.3.blocks.0.ss2d.conv2d.bias,
+vss_output3_weight_mag,ssm_out_projection_w,ssm_out_projection_w.bin,vss_output3_weight_mag/ssm_out_projection_w.bin,float32,2,1x2,output_layer_mag.3.blocks.0.ss2d.out_proj.weight,
+vss_output3_weight_mag,ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,vss_output3_weight_mag/ssm_dw_conv1d_w.bin,float32,24,12x2,output_layer_mag.3.blocks.0.ss2d.x_proj_conv.weight,
+vss_output3_weight_mag,ssm_dt_projection_w,ssm_dt_projection_w.bin,vss_output3_weight_mag/ssm_dt_projection_w.bin,float32,8,8x1,output_layer_mag.3.blocks.0.ss2d.dt_proj_conv.weight,
+vss_output3_weight_mag,ssm_A,ssm_A.bin,vss_output3_weight_mag/ssm_A.bin,float32,8,8x1,output_layer_mag.3.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+vss_output3_weight_mag,ssm_Ds,ssm_Ds.bin,vss_output3_weight_mag/ssm_Ds.bin,float32,8,8,output_layer_mag.3.blocks.0.ss2d.Ds,
+vss_output3_weight_mag,ssm_delta_bias,ssm_delta_bias.bin,vss_output3_weight_mag/ssm_delta_bias.bin,float32,8,8,output_layer_mag.3.blocks.0.ss2d.dt_projs_bias,
+vss_output3_weight_mag,ssm_out_norm_w,ssm_out_norm_w.bin,vss_output3_weight_mag/ssm_out_norm_w.bin,float32,2,2,output_layer_mag.3.blocks.0.ss2d.out_norm.weight,
+vss_output3_weight_mag,ssm_out_norm_b,ssm_out_norm_b.bin,vss_output3_weight_mag/ssm_out_norm_b.bin,float32,2,2,output_layer_mag.3.blocks.0.ss2d.out_norm.bias,
+vss_output3_weight_mag,mlp_fc1_w,mlp_fc1_w.bin,vss_output3_weight_mag/mlp_fc1_w.bin,int8,2,2x1,output_layer_mag.3.blocks.0.mlp.fc1.weight_int8,as stored (no refold)
+vss_output3_weight_mag,mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,vss_output3_weight_mag/mlp_fc1_w_quant_scale.bin,float32,1,1,output_layer_mag.3.blocks.0.mlp.fc1.a_scale,per-tensor a_scale*a_scale_mul
+vss_output3_weight_mag,mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,vss_output3_weight_mag/mlp_fc1_w_dequant_scale.bin,float32,2,2,output_layer_mag.3.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+vss_output3_weight_mag,mlp_fc1_b_i32,mlp_fc1_b_i32.bin,vss_output3_weight_mag/mlp_fc1_b_i32.bin,int32,2,2,output_layer_mag.3.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+vss_output3_weight_mag,mlp_fc2_w,mlp_fc2_w.bin,vss_output3_weight_mag/mlp_fc2_w.bin,int8,2,1x2,output_layer_mag.3.blocks.0.mlp.fc2.weight_int8,"act scale folded, requantized per OC"
+vss_output3_weight_mag,mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,vss_output3_weight_mag/mlp_fc2_w_quant_scale.bin,float32,2,2,output_layer_mag.3.blocks.0.mlp.fc2.a_scale,sq_s*a_scale*a_scale_mul
+vss_output3_weight_mag,mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,vss_output3_weight_mag/mlp_fc2_w_dequant_scale.bin,float32,1,1,output_layer_mag.3.blocks.0.mlp.fc2.w_scale,per-OC; int32 acc -> f32
+vss_output3_weight_mag,mlp_fc2_b_i32,mlp_fc2_b_i32.bin,vss_output3_weight_mag/mlp_fc2_b_i32.bin,int32,1,1,output_layer_mag.3.blocks.0.mlp.fc2.bias,round(bias_f32 / dequant_scale)
+vss_output3_weight_pha,pre_conv2d_w,pre_conv2d_w.bin,vss_output3_weight_pha/pre_conv2d_w.bin,float32,4,1x4,output_layer_phase.2.weight,
+vss_output3_weight_pha,pre_conv2d_b,pre_conv2d_b.bin,vss_output3_weight_pha/pre_conv2d_b.bin,float32,1,1,output_layer_phase.2.bias,
+vss_output3_weight_pha,ssm_in_projection_w,ssm_in_projection_w.bin,vss_output3_weight_pha/ssm_in_projection_w.bin,float32,4,4x1,output_layer_phase.3.blocks.0.ss2d.in_proj.weight,
+vss_output3_weight_pha,ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,vss_output3_weight_pha/ssm_dw_conv2d_w.bin,float32,18,2x3x3,output_layer_phase.3.blocks.0.ss2d.conv2d.weight,
+vss_output3_weight_pha,ssm_dw_conv2d_b,ssm_dw_conv2d_b.bin,vss_output3_weight_pha/ssm_dw_conv2d_b.bin,float32,2,2,output_layer_phase.3.blocks.0.ss2d.conv2d.bias,
+vss_output3_weight_pha,ssm_out_projection_w,ssm_out_projection_w.bin,vss_output3_weight_pha/ssm_out_projection_w.bin,float32,2,1x2,output_layer_phase.3.blocks.0.ss2d.out_proj.weight,
+vss_output3_weight_pha,ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,vss_output3_weight_pha/ssm_dw_conv1d_w.bin,float32,24,12x2,output_layer_phase.3.blocks.0.ss2d.x_proj_conv.weight,
+vss_output3_weight_pha,ssm_dt_projection_w,ssm_dt_projection_w.bin,vss_output3_weight_pha/ssm_dt_projection_w.bin,float32,8,8x1,output_layer_phase.3.blocks.0.ss2d.dt_proj_conv.weight,
+vss_output3_weight_pha,ssm_A,ssm_A.bin,vss_output3_weight_pha/ssm_A.bin,float32,8,8x1,output_layer_phase.3.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+vss_output3_weight_pha,ssm_Ds,ssm_Ds.bin,vss_output3_weight_pha/ssm_Ds.bin,float32,8,8,output_layer_phase.3.blocks.0.ss2d.Ds,
+vss_output3_weight_pha,ssm_delta_bias,ssm_delta_bias.bin,vss_output3_weight_pha/ssm_delta_bias.bin,float32,8,8,output_layer_phase.3.blocks.0.ss2d.dt_projs_bias,
+vss_output3_weight_pha,ssm_out_norm_w,ssm_out_norm_w.bin,vss_output3_weight_pha/ssm_out_norm_w.bin,float32,2,2,output_layer_phase.3.blocks.0.ss2d.out_norm.weight,
+vss_output3_weight_pha,ssm_out_norm_b,ssm_out_norm_b.bin,vss_output3_weight_pha/ssm_out_norm_b.bin,float32,2,2,output_layer_phase.3.blocks.0.ss2d.out_norm.bias,
+vss_output3_weight_pha,mlp_fc1_w,mlp_fc1_w.bin,vss_output3_weight_pha/mlp_fc1_w.bin,int8,2,2x1,output_layer_phase.3.blocks.0.mlp.fc1.weight_int8,as stored (no refold)
+vss_output3_weight_pha,mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,vss_output3_weight_pha/mlp_fc1_w_quant_scale.bin,float32,1,1,output_layer_phase.3.blocks.0.mlp.fc1.a_scale,per-tensor a_scale*a_scale_mul
+vss_output3_weight_pha,mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,vss_output3_weight_pha/mlp_fc1_w_dequant_scale.bin,float32,2,2,output_layer_phase.3.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+vss_output3_weight_pha,mlp_fc1_b_i32,mlp_fc1_b_i32.bin,vss_output3_weight_pha/mlp_fc1_b_i32.bin,int32,2,2,output_layer_phase.3.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+vss_output3_weight_pha,mlp_fc2_w,mlp_fc2_w.bin,vss_output3_weight_pha/mlp_fc2_w.bin,int8,2,1x2,output_layer_phase.3.blocks.0.mlp.fc2.weight_int8,"act scale folded, requantized per OC"
+vss_output3_weight_pha,mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,vss_output3_weight_pha/mlp_fc2_w_quant_scale.bin,float32,2,2,output_layer_phase.3.blocks.0.mlp.fc2.a_scale,sq_s*a_scale*a_scale_mul
+vss_output3_weight_pha,mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,vss_output3_weight_pha/mlp_fc2_w_dequant_scale.bin,float32,1,1,output_layer_phase.3.blocks.0.mlp.fc2.w_scale,per-OC; int32 acc -> f32
+vss_output3_weight_pha,mlp_fc2_b_i32,mlp_fc2_b_i32.bin,vss_output3_weight_pha/mlp_fc2_b_i32.bin,int32,1,1,output_layer_phase.3.blocks.0.mlp.fc2.bias,round(bias_f32 / dequant_scale)

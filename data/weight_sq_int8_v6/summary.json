@@ -1,0 +1,32 @@
+{
+  "pack_path": "/F/AI_Train/M11309813/Personal_AI_Model_Training/myenv/NAS/Projects/AuAx/Model/UPVM-ASR-FOR-C/model_pytorch/model/gen_ptq_int8pack.pth",
+  "output_root": "/F/AI_Train/M11309813/Personal_AI_Model_Training/myenv/NAS/Projects/AuAx/Model/UPVM-ASR-FOR-C/data/weight_sq_int8_v6",
+  "num_stages": 24,
+  "num_files": 718,
+  "stages": [
+    "embed_weight_mag",
+    "embed_weight_pha",
+    "pvss_ds_weight_enc0_mag",
+    "pvss_ds_weight_enc0_pha",
+    "pvss_ds_weight_enc1_mag",
+    "pvss_ds_weight_enc1_pha",
+    "pvss_ds_weight_enc2_mag",
+    "pvss_ds_weight_enc2_pha",
+    "pvss_latent_weight_mag",
+    "pvss_latent_weight_pha",
+    "pvss_us_skip_weight_mag",
+    "pvss_us_skip_weight_pha",
+    "pvss_us_weight_dec0_mag",
+    "pvss_us_weight_dec0_pha",
+    "pvss_us_weight_dec1_mag",
+    "pvss_us_weight_dec1_pha",
+    "pvss_us_weight_dec2_mag",
+    "pvss_us_weight_dec2_pha",
+    "vss_output0_weight_mag",
+    "vss_output0_weight_pha",
+    "vss_output1_weight_mag",
+    "vss_output1_weight_pha",
+    "vss_output3_weight_mag",
+    "vss_output3_weight_pha"
+  ]
+}

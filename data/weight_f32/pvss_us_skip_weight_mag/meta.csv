@@ -1,0 +1,9 @@
+member_name,filename,dtype,numel,shape,source_key,note
+skip_conv_dec0_w,skip_conv_dec0_w.bin,float32,32768,128x256,layers_decoder_mag.1.skip_handler.weight,
+skip_conv_dec0_b,skip_conv_dec0_b.bin,float32,128,128,layers_decoder_mag.1.skip_handler.bias,
+skip_conv_dec1_w,skip_conv_dec1_w.bin,float32,8192,64x128,layers_decoder_mag.2.skip_handler.weight,
+skip_conv_dec1_b,skip_conv_dec1_b.bin,float32,64,64,layers_decoder_mag.2.skip_handler.bias,
+skip_conv_dec2_w,skip_conv_dec2_w.bin,float32,2048,32x64,layers_decoder_mag.3.skip_handler.weight,
+skip_conv_dec2_b,skip_conv_dec2_b.bin,float32,32,32,layers_decoder_mag.3.skip_handler.bias,
+skip_conv_out0_w,skip_conv_out0_w.bin,float32,512,16x32,output_layer_mag.0.skip_handler.weight,
+skip_conv_out0_b,skip_conv_out0_b.bin,float32,16,16,output_layer_mag.0.skip_handler.bias,

@@ -1,0 +1,17 @@
+member_name,filename,dtype,numel,shape,source_key,note
+skip_conv_dec0_w,skip_conv_dec0_w.bin,int8,32768,128x256,layers_decoder_phase.1.skip_handler.weight_int8,"act scale folded, requantized per OC"
+skip_conv_dec0_w_quant_scale,skip_conv_dec0_w_quant_scale.bin,float32,256,256,layers_decoder_phase.1.skip_handler.a_scale,sq_s*a_scale*a_scale_mul
+skip_conv_dec0_w_dequant_scale,skip_conv_dec0_w_dequant_scale.bin,float32,128,128,layers_decoder_phase.1.skip_handler.w_scale,per-OC; int32 acc -> f32
+skip_conv_dec0_b_i32,skip_conv_dec0_b_i32.bin,int32,128,128,layers_decoder_phase.1.skip_handler.bias,round(bias_f32 / dequant_scale)
+skip_conv_dec1_w,skip_conv_dec1_w.bin,int8,8192,64x128,layers_decoder_phase.2.skip_handler.weight_int8,"act scale folded, requantized per OC"
+skip_conv_dec1_w_quant_scale,skip_conv_dec1_w_quant_scale.bin,float32,128,128,layers_decoder_phase.2.skip_handler.a_scale,sq_s*a_scale*a_scale_mul
+skip_conv_dec1_w_dequant_scale,skip_conv_dec1_w_dequant_scale.bin,float32,64,64,layers_decoder_phase.2.skip_handler.w_scale,per-OC; int32 acc -> f32
+skip_conv_dec1_b_i32,skip_conv_dec1_b_i32.bin,int32,64,64,layers_decoder_phase.2.skip_handler.bias,round(bias_f32 / dequant_scale)
+skip_conv_dec2_w,skip_conv_dec2_w.bin,int8,2048,32x64,layers_decoder_phase.3.skip_handler.weight_int8,"act scale folded, requantized per OC"
+skip_conv_dec2_w_quant_scale,skip_conv_dec2_w_quant_scale.bin,float32,64,64,layers_decoder_phase.3.skip_handler.a_scale,sq_s*a_scale*a_scale_mul
+skip_conv_dec2_w_dequant_scale,skip_conv_dec2_w_dequant_scale.bin,float32,32,32,layers_decoder_phase.3.skip_handler.w_scale,per-OC; int32 acc -> f32
+skip_conv_dec2_b_i32,skip_conv_dec2_b_i32.bin,int32,32,32,layers_decoder_phase.3.skip_handler.bias,round(bias_f32 / dequant_scale)
+skip_conv_out0_w,skip_conv_out0_w.bin,int8,512,16x32,output_layer_phase.0.skip_handler.weight_int8,"act scale folded, requantized per OC"
+skip_conv_out0_w_quant_scale,skip_conv_out0_w_quant_scale.bin,float32,32,32,output_layer_phase.0.skip_handler.a_scale,sq_s*a_scale*a_scale_mul
+skip_conv_out0_w_dequant_scale,skip_conv_out0_w_dequant_scale.bin,float32,16,16,output_layer_phase.0.skip_handler.w_scale,per-OC; int32 acc -> f32
+skip_conv_out0_b_i32,skip_conv_out0_b_i32.bin,int32,16,16,output_layer_phase.0.skip_handler.bias,round(bias_f32 / dequant_scale)

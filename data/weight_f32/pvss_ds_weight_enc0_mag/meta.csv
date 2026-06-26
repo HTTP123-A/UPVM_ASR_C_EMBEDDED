@@ -1,0 +1,25 @@
+member_name,filename,dtype,numel,shape,source_key,note
+ssm_in_norm_w,ssm_in_norm_w.bin,float32,16,16,layers_encoder_mag.0.blocks.0.norm.weight,
+ssm_in_norm_b,ssm_in_norm_b.bin,float32,16,16,layers_encoder_mag.0.blocks.0.norm.bias,
+ssm_in_projection_w,ssm_in_projection_w.bin,float32,4,4x1,layers_encoder_mag.0.blocks.0.ss2d.in_proj.weight,
+ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,float32,18,2x3x3,layers_encoder_mag.0.blocks.0.ss2d.conv2d.weight,
+ssm_dw_conv2d_b,ssm_dw_conv2d_b.bin,float32,2,2,layers_encoder_mag.0.blocks.0.ss2d.conv2d.bias,
+ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,float32,24,12x2,layers_encoder_mag.0.blocks.0.ss2d.x_proj_conv.weight,
+ssm_dt_projection_w,ssm_dt_projection_w.bin,float32,8,8x1,layers_encoder_mag.0.blocks.0.ss2d.dt_proj_conv.weight,
+ssm_A,ssm_A.bin,float32,8,8x1,layers_encoder_mag.0.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+ssm_Ds,ssm_Ds.bin,float32,8,8,layers_encoder_mag.0.blocks.0.ss2d.Ds,
+ssm_delta_bias,ssm_delta_bias.bin,float32,8,8,layers_encoder_mag.0.blocks.0.ss2d.dt_projs_bias,
+ssm_out_norm_w,ssm_out_norm_w.bin,float32,2,2,layers_encoder_mag.0.blocks.0.ss2d.out_norm.weight,
+ssm_out_norm_b,ssm_out_norm_b.bin,float32,2,2,layers_encoder_mag.0.blocks.0.ss2d.out_norm.bias,
+ssm_out_projection_w,ssm_out_projection_w.bin,float32,2,1x2,layers_encoder_mag.0.blocks.0.ss2d.out_proj.weight,
+mlp_norm_w,mlp_norm_w.bin,float32,16,16,layers_encoder_mag.0.blocks.0.norm2.weight,
+mlp_norm_b,mlp_norm_b.bin,float32,16,16,layers_encoder_mag.0.blocks.0.norm2.bias,
+mlp_fc1_w,mlp_fc1_w.bin,float32,256,16x16,layers_encoder_mag.0.blocks.0.mlp.fc1.weight,
+mlp_fc1_b,mlp_fc1_b.bin,float32,16,16,layers_encoder_mag.0.blocks.0.mlp.fc1.bias,
+mlp_fc2_w,mlp_fc2_w.bin,float32,512,32x16,layers_encoder_mag.0.blocks.0.mlp.fc2.mlp_dim_redu.weight,
+mlp_fc2_b,mlp_fc2_b.bin,float32,32,32,<generated>,zero bias placeholder
+mlp_fc_res_w,mlp_fc_res_w.bin,float32,512,32x16,layers_encoder_mag.0.blocks.0.skip_proj.skip_dim_redu.weight,
+mlp_fc_res_b,mlp_fc_res_b.bin,float32,32,32,<generated>,zero bias placeholder
+mlp_sumpool_w,mlp_sumpool_w.bin,float32,64,16x2x2,layers_encoder_mag.0.blocks.0.mlp.fc2.mlp_sumpool.weight,
+mlp_dim_reduce_w,mlp_dim_reduce_w.bin,float32,1,1,<unused>,unused optional field
+skip_reduce_w,skip_reduce_w.bin,float32,1,1,<unused>,unused optional field

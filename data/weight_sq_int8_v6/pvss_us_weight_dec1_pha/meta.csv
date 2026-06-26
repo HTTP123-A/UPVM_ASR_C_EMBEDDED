@@ -1,0 +1,39 @@
+member_name,filename,dtype,numel,shape,source_key,note
+ssm_in_norm_w,ssm_in_norm_w.bin,float32,64,64,layers_decoder_phase.2.blocks.0.norm.weight,
+ssm_in_norm_b,ssm_in_norm_b.bin,float32,64,64,layers_decoder_phase.2.blocks.0.norm.bias,
+ssm_in_projection_w,ssm_in_projection_w.bin,int8,256,32x8,layers_decoder_phase.2.blocks.0.ss2d.in_proj.weight_int8,"act scale folded, requantized per OC"
+ssm_in_projection_w_quant_scale,ssm_in_projection_w_quant_scale.bin,float32,8,8,layers_decoder_phase.2.blocks.0.ss2d.in_proj.a_scale,sq_s*a_scale*a_scale_mul
+ssm_in_projection_w_dequant_scale,ssm_in_projection_w_dequant_scale.bin,float32,32,32,layers_decoder_phase.2.blocks.0.ss2d.in_proj.w_scale,per-OC; int32 acc -> f32
+ssm_dw_conv2d_w,ssm_dw_conv2d_w.bin,int8,144,16x3x3,layers_decoder_phase.2.blocks.0.ss2d.conv2d.weight_int8,as stored (no refold)
+ssm_dw_conv2d_w_quant_scale,ssm_dw_conv2d_w_quant_scale.bin,float32,16,16,layers_decoder_phase.2.blocks.0.ss2d.conv2d.a_scale,sq_s*a_scale*a_scale_mul
+ssm_dw_conv2d_w_dequant_scale,ssm_dw_conv2d_w_dequant_scale.bin,float32,16,16,layers_decoder_phase.2.blocks.0.ss2d.conv2d.w_scale,per-OC; int32 acc -> f32
+ssm_dw_conv2d_b_i32,ssm_dw_conv2d_b_i32.bin,int32,16,16,layers_decoder_phase.2.blocks.0.ss2d.conv2d.bias,round(bias_f32 / dequant_scale)
+ssm_dw_conv1d_w,ssm_dw_conv1d_w.bin,float32,192,12x16,layers_decoder_phase.2.blocks.0.ss2d.x_proj_conv.weight,
+ssm_dt_projection_w,ssm_dt_projection_w.bin,float32,64,64x1,layers_decoder_phase.2.blocks.0.ss2d.dt_proj_conv.weight,
+ssm_A,ssm_A.bin,float32,64,64x1,layers_decoder_phase.2.blocks.0.ss2d.A_logs,A = -exp(A_logs)
+ssm_Ds,ssm_Ds.bin,float32,64,64,layers_decoder_phase.2.blocks.0.ss2d.Ds,
+ssm_delta_bias,ssm_delta_bias.bin,float32,64,64,layers_decoder_phase.2.blocks.0.ss2d.dt_projs_bias,
+ssm_out_norm_w,ssm_out_norm_w.bin,float32,16,16,layers_decoder_phase.2.blocks.0.ss2d.out_norm.weight,
+ssm_out_norm_b,ssm_out_norm_b.bin,float32,16,16,layers_decoder_phase.2.blocks.0.ss2d.out_norm.bias,
+ssm_out_projection_w,ssm_out_projection_w.bin,int8,128,8x16,layers_decoder_phase.2.blocks.0.ss2d.out_proj.weight_int8,"act scale folded, requantized per OC"
+ssm_out_projection_w_quant_scale,ssm_out_projection_w_quant_scale.bin,float32,16,16,layers_decoder_phase.2.blocks.0.ss2d.out_proj.a_scale,sq_s*a_scale*a_scale_mul
+ssm_out_projection_w_dequant_scale,ssm_out_projection_w_dequant_scale.bin,float32,8,8,layers_decoder_phase.2.blocks.0.ss2d.out_proj.w_scale,per-OC; int32 acc -> f32
+mlp_norm_w,mlp_norm_w.bin,float32,64,64,layers_decoder_phase.2.blocks.0.norm2.weight,
+mlp_norm_b,mlp_norm_b.bin,float32,64,64,layers_decoder_phase.2.blocks.0.norm2.bias,
+mlp_fc1_w,mlp_fc1_w.bin,int8,4096,64x64,layers_decoder_phase.2.blocks.0.mlp.fc1.weight_int8,"act scale folded, requantized per OC"
+mlp_fc1_w_quant_scale,mlp_fc1_w_quant_scale.bin,float32,64,64,layers_decoder_phase.2.blocks.0.mlp.fc1.a_scale,sq_s*a_scale*a_scale_mul
+mlp_fc1_w_dequant_scale,mlp_fc1_w_dequant_scale.bin,float32,64,64,layers_decoder_phase.2.blocks.0.mlp.fc1.w_scale,per-OC; int32 acc -> f32
+mlp_fc1_b_i32,mlp_fc1_b_i32.bin,int32,64,64,layers_decoder_phase.2.blocks.0.mlp.fc1.bias,round(bias_f32 / dequant_scale)
+mlp_fc2_w,mlp_fc2_w.bin,int8,4096,64x64,layers_decoder_phase.2.blocks.0.mlp.fc2.weight_int8,"act scale folded, requantized per OC"
+mlp_fc2_w_quant_scale,mlp_fc2_w_quant_scale.bin,float32,64,64,layers_decoder_phase.2.blocks.0.mlp.fc2.a_scale,sq_s*a_scale*a_scale_mul
+mlp_fc2_w_dequant_scale,mlp_fc2_w_dequant_scale.bin,float32,64,64,layers_decoder_phase.2.blocks.0.mlp.fc2.w_scale,per-OC; int32 acc -> f32
+mlp_fc2_b_i32,mlp_fc2_b_i32.bin,int32,64,64,layers_decoder_phase.2.blocks.0.mlp.fc2.bias,round(bias_f32 / dequant_scale)
+pe_w,pe_w.bin,int8,8192,128x64,layers_decoder_phase.2.sampler.expand.weight_int8,"act scale folded, requantized per OC"
+pe_w_quant_scale,pe_w_quant_scale.bin,float32,64,64,layers_decoder_phase.2.sampler.expand.a_scale,sq_s*a_scale*a_scale_mul
+pe_w_dequant_scale,pe_w_dequant_scale.bin,float32,128,128,layers_decoder_phase.2.sampler.expand.w_scale,per-OC; int32 acc -> f32
+pe_norm_w,pe_norm_w.bin,float32,32,32,layers_decoder_phase.2.sampler.norm.weight,
+pe_norm_b,pe_norm_b.bin,float32,32,32,layers_decoder_phase.2.sampler.norm.bias,
+mlp_requant_scale,mlp_requant_scale.bin,float32,64,64,derived: mlp_fc1.w_dequant_scale / mlp_fc2.w_quant_scale,"fc1 deq / fc2 act, fused REQUANT"
+ssm_requant_scale,ssm_requant_scale.bin,float32,16,16,derived: ssm_in_projection.w_dequant_scale[:SUB_D_INNER] / ssm_dw_conv2d.w_quant_scale,"in_proj deq(x) / dw_conv act, fused SSM REQUANT"
+mlp_requant_mul,mlp_requant_mul.bin,int32,64,64,derived: search round(mlp_requant_scale * 2^shift),v6 fixed-point requant multiplier
+mlp_requant_shift,mlp_requant_shift.bin,int32,64,64,derived: best right-shift for mlp_requant_scale,v6 fixed-point requant shift
